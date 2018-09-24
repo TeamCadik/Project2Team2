@@ -1,5 +1,7 @@
 package com.revature.beans;
 
+import java.util.Set;
+
 public class User {
 
 	private Integer userId;
@@ -8,6 +10,7 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private Integer isDeveloper;
+	private Set<Character> characters;
 	
 	public User() {
 		super();
