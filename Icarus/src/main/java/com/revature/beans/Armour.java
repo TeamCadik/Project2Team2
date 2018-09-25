@@ -1,7 +1,11 @@
 package com.revature.beans;
 
+@Entity
+@Table(name="armour")
 public class Armour {
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="armour")
+	@SequenceGenerator(name="armour", sequenceName="armour_seq", allocationSize=1)
 	private Integer armourId;
 	private String armourType;
 	private Integer defenseModifier;
