@@ -2,8 +2,21 @@ package com.revature.beans;
 
 import java.util.Set;
 
-public class Character {
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="character")
+public class Character {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="character")
+	@SequenceGenerator(name="character", sequenceName="character_seq", allocationSize=1)
 	private Integer characterId;
 	private Integer headId;
 	private String characterName;
@@ -14,10 +27,19 @@ public class Character {
 	private Integer hp;
 	private Integer defense;
 	private Integer attack;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="character")
 	private Set<Build> builds;
 	
 	public Character() {
 		super();
+	}
+
+	public Set<Build> getBuilds() {
+		return builds;
+	}
+
+	public void setBuilds(Set<Build> builds) {
+		this.builds = builds;
 	}
 
 	public Integer getCharacterId() {
@@ -105,6 +127,7 @@ public class Character {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((attack == null) ? 0 : attack.hashCode());
+		result = prime * result + ((builds == null) ? 0 : builds.hashCode());
 		result = prime * result + ((characterId == null) ? 0 : characterId.hashCode());
 		result = prime * result + ((characterName == null) ? 0 : characterName.hashCode());
 		result = prime * result + ((characterlevel == null) ? 0 : characterlevel.hashCode());
@@ -130,6 +153,11 @@ public class Character {
 			if (other.attack != null)
 				return false;
 		} else if (!attack.equals(other.attack))
+			return false;
+		if (builds == null) {
+			if (other.builds != null)
+				return false;
+		} else if (!builds.equals(other.builds))
 			return false;
 		if (characterId == null) {
 			if (other.characterId != null)
@@ -183,6 +211,7 @@ public class Character {
 	public String toString() {
 		return "Character [characterId=" + characterId + ", headId=" + headId + ", characterName=" + characterName
 				+ ", characterlevel=" + characterlevel + ", strength=" + strength + ", intelligence=" + intelligence
-				+ ", dexterity=" + dexterity + ", hp=" + hp + ", defense=" + defense + ", attack=" + attack + "]";
+				+ ", dexterity=" + dexterity + ", hp=" + hp + ", defense=" + defense + ", attack=" + attack
+				+ ", builds=" + builds + "]";
 	}
 }

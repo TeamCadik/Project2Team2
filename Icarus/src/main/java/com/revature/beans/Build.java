@@ -2,8 +2,21 @@ package com.revature.beans;
 
 import java.util.Set;
 
-public class Build {
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="build")
+public class Build {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="build")
+	@SequenceGenerator(name="build", sequenceName="build_seq", allocationSize=1)
 	private Integer buildId;
 	private Armour head;
 	private Armour torso;
@@ -11,6 +24,7 @@ public class Build {
 	private Armour gloves;
 	private Armour mainHand;
 	private Armour offHand;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="build")
 	private Set<String> comments;
 	
 	public Build() {

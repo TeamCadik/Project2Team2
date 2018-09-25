@@ -1,7 +1,18 @@
 package com.revature.beans;
 
-public class Weapon {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="weapon")
+public class Weapon {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="weapon")
+	@SequenceGenerator(name="weapon", sequenceName="weapon_seq", allocationSize=1)
 	private Integer weaponId;
 	private String weaponType;
 	private Integer attackModifier;
