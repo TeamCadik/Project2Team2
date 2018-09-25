@@ -2,18 +2,42 @@ package com.revature.beans;
 
 import java.util.Set;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="user")
+public class User {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user")
+	@SequenceGenerator(name="user", sequenceName="user_seq", allocationSize=1)
 	private Integer userId;
 	private String username;
 	private String password;
 	private String firstname;
 	private String lastname;
 	private Integer isDeveloper;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="user")
 	private Set<Character> characters;
 	
 	public User() {
 		super();
+	}
+
+	public Set<Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(Set<Character> characters) {
+		this.characters = characters;
 	}
 
 	public Integer getUserId() {
@@ -68,6 +92,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((characters == null) ? 0 : characters.hashCode());
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((isDeveloper == null) ? 0 : isDeveloper.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
@@ -86,6 +111,11 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (characters == null) {
+			if (other.characters != null)
+				return false;
+		} else if (!characters.equals(other.characters))
+			return false;
 		if (firstname == null) {
 			if (other.firstname != null)
 				return false;
@@ -122,6 +152,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstname="
-				+ firstname + ", lastname=" + lastname + ", isDeveloper=" + isDeveloper + "]";
+				+ firstname + ", lastname=" + lastname + ", isDeveloper=" + isDeveloper + ", characters=" + characters
+				+ "]";
 	}
 }
