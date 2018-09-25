@@ -1,23 +1,27 @@
 package com.revature.data;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import com.revature.beans.User;
+import com.revature.beans.Weapon;
 import com.revature.utils.HibernateUtil;
 
-public class UserHibernate implements UserDAO{
+public class WeaponHibernate implements WeaponDAO{
 	private HibernateUtil hu = HibernateUtil.getInstance();
 
 	@Override
-	public int addUser(User user) {
+	public int addWeapon(Weapon weapon) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
 		Integer id = 0;
 		try {
-			id = (Integer) s.save(user);
+			id = (Integer) s.save(weapon);
 			t.commit();
 		} catch(HibernateException e) {
 			t.rollback();
@@ -28,36 +32,38 @@ public class UserHibernate implements UserDAO{
 	}
 
 	@Override
-	public User getUser(String username, String password) {
+	public Weapon getWeapon(int weaponId) {
 		Session s = hu.getSession();
-		String query = "FROM Character where username=:username and password=:password";
-		Query<User> user =  s.createQuery(query, User.class);
-		return (User) user;
-	}
-
-
-	@Override
-	public User getUserById(int userId) {
-		Session s = hu.getSession();
-		User user = s.get(User.class, userId);
+		Weapon weapon = s.get(Weapon.class, weaponId);
 		s.close();
-		return user;
+		return weapon;
 	}
 
 	@Override
-	public void deleteUser(User user) {
+	public Set<Weapon> getAllWeapon() {
+		Session s = hu.getSession();
+		String query = "FROM Weapon";
+		Query<Weapon> q = s.createQuery(query, Weapon.class);
+		List<Weapon> weaponList = q.getResultList();
+		Set<Weapon> weaponSet = new HashSet<Weapon>();
+		weaponSet.addAll(weaponList);
+		return weaponSet;
+	}
+
+	@Override
+	public void updateWeapon(Weapon weapon) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.update(user);
+		s.update(weapon);
 		t.commit();
-		s.close();				
+		s.close();			
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void deleteWeapon(Weapon weapon) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.delete(user);
+		s.delete(weapon);
 		t.commit();
 		s.close();			
 	}

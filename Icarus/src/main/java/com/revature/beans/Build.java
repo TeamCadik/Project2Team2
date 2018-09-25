@@ -22,20 +22,20 @@ public class Build {
 	private Armour torso;
 	private Armour legs;
 	private Armour gloves;
-	private Armour mainHand;
-	private Armour offHand;
+	private Weapon mainHand;
+	private Weapon offHand;
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="build")
-	private Set<String> comments;
+	private Set<Comment> comments;
 	
 	public Build() {
 		super();
 	}
 
-	public Set<String> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(Set<String> comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 
@@ -79,19 +79,19 @@ public class Build {
 		this.gloves = gloves;
 	}
 
-	public Armour getMainHand() {
+	public Weapon getMainHand() {
 		return mainHand;
 	}
 
-	public void setMainHand(Armour mainHand) {
+	public void setMainHand(Weapon mainHand) {
 		this.mainHand = mainHand;
 	}
 
-	public Armour getOffHand() {
+	public Weapon getOffHand() {
 		return offHand;
 	}
 
-	public void setOffHand(Armour offHand) {
+	public void setOffHand(Weapon offHand) {
 		this.offHand = offHand;
 	}
 
