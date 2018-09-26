@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -18,6 +19,7 @@ public class Character {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="character")
 	@SequenceGenerator(name="character", sequenceName="character_seq", allocationSize=1)
 	private Integer characterId;
+	private Integer userId;
 	private Integer headId;
 	private String characterName;
 	private Integer characterlevel;
@@ -27,7 +29,7 @@ public class Character {
 	private Integer hp;
 	private Integer defense;
 	private Integer attack;
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="character")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="build")
 	private Set<Build> builds;
 	
 	public Character() {

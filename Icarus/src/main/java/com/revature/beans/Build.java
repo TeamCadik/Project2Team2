@@ -1,15 +1,21 @@
 package com.revature.beans;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="build")
@@ -18,12 +24,16 @@ public class Build {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="build")
 	@SequenceGenerator(name="build", sequenceName="build_seq", allocationSize=1)
 	private Integer buildId;
-	private Armour head;
-	private Armour torso;
-	private Armour legs;
-	private Armour gloves;
+	Map<String, Armour> armourSet = new HashMap<String, Armour>();
+	
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="weaponId")
 	private Weapon mainHand;
+	
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="weaponId")
 	private Weapon offHand;
+	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="build")
 	private Set<Comment> comments;
 	

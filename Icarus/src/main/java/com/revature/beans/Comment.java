@@ -1,11 +1,13 @@
 package com.revature.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Comments")
 public class Comment {
+	@Id
 	private Integer buildId;
 	private String commentStr;
 	public Integer getBuildId() {
