@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,6 +14,7 @@ public class Armour {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="armour")
 	@SequenceGenerator(name="armour", sequenceName="armour_seq", allocationSize=1)
+	@JoinColumn(name="armourId", insertable=false, updatable=false)
 	private Integer armourId;
 	private String armourType;
 	private Integer defenseModifier;

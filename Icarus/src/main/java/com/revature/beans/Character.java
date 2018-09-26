@@ -7,7 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -20,7 +19,6 @@ public class Character {
 	@SequenceGenerator(name="character", sequenceName="character_seq", allocationSize=1)
 	private Integer characterId;
 	private Integer userId;
-	private Integer headId;
 	private String characterName;
 	private Integer characterlevel;
 	private Integer strength;
@@ -29,7 +27,7 @@ public class Character {
 	private Integer hp;
 	private Integer defense;
 	private Integer attack;
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="build")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="buildId")
 	private Set<Build> builds;
 	
 	public Character() {
@@ -52,12 +50,12 @@ public class Character {
 		this.characterId = characterId;
 	}
 
-	public Integer getHeadId() {
-		return headId;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setHeadId(Integer headId) {
-		this.headId = headId;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getCharacterName() {
@@ -135,10 +133,10 @@ public class Character {
 		result = prime * result + ((characterlevel == null) ? 0 : characterlevel.hashCode());
 		result = prime * result + ((defense == null) ? 0 : defense.hashCode());
 		result = prime * result + ((dexterity == null) ? 0 : dexterity.hashCode());
-		result = prime * result + ((headId == null) ? 0 : headId.hashCode());
 		result = prime * result + ((hp == null) ? 0 : hp.hashCode());
 		result = prime * result + ((intelligence == null) ? 0 : intelligence.hashCode());
 		result = prime * result + ((strength == null) ? 0 : strength.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
 
@@ -186,11 +184,6 @@ public class Character {
 				return false;
 		} else if (!dexterity.equals(other.dexterity))
 			return false;
-		if (headId == null) {
-			if (other.headId != null)
-				return false;
-		} else if (!headId.equals(other.headId))
-			return false;
 		if (hp == null) {
 			if (other.hp != null)
 				return false;
@@ -206,12 +199,17 @@ public class Character {
 				return false;
 		} else if (!strength.equals(other.strength))
 			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Character [characterId=" + characterId + ", headId=" + headId + ", characterName=" + characterName
+		return "Character [characterId=" + characterId + ", userId=" + userId + ", characterName=" + characterName
 				+ ", characterlevel=" + characterlevel + ", strength=" + strength + ", intelligence=" + intelligence
 				+ ", dexterity=" + dexterity + ", hp=" + hp + ", defense=" + defense + ", attack=" + attack
 				+ ", builds=" + builds + "]";
