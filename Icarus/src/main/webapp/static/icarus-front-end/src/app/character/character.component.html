@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div id="charBanner" class="border border-light rounded">
+                <ul class="list-inline mx-auto row justify-content-center">
+                    <li class="list-inline-item mt-1 ml-5 mr-5">Character Name: <span id="charName">Iron Fighter</span></li>
+                    <li class="list-inline-item ml-5 mr-5">Character Level: <span id="level">100</span></li>
+                    <li class="list-inline-item ml-5 mr-5">Character Item Level: <span id="ilevel">125</span> </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="colPack" class="row justify-content-center">
+            <div id="colLeft" class="col-3">
+                <div class="" style="width: 300px">
+                    <div id="mainStats" class="border border-light rounded mb-5" style="width: 300px">
+                        <ul class="list-group">
+                            <li class="list-group-item">Strength: <span id="str"></span></li>
+                            <li class="list-group-item">Dexterity: <span id="dex"></span></li>
+                            <li class="list-group-item">Vitality: <span id="vit"></span></li>
+                            <li class="list-group-item">Agility: <span id="agi"></span></li>
+                            <li class="list-group-item">Intelligence: <span id="int"></span></li>
+                            <li class="list-group-item">Mind: <span id="mnd"></span></li>
+                        </ul>
+                    </div>
+                    <div id="comments" class="border border-light rounded mt-5" style="width: 300px">
+                        <p class="ml-1">Comments:</p>
+                        <textarea name="showText" id="commentText" cols="39" rows="10" readonly></textarea>
+                        <div class="row justify-content-center">
+                            <input type="text" id="textIn" value="Enter Comments">
+                            <button>Post Comment</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="colCenter" class="col-6 ">
+                <div id="charBody">
+
+                    <div id="charHeas"></div>
+                    <div id="head" class="charSlot">
+                        <span class="itemText rounded">Helm</span>
+                    </div>
+
+
+                    <div id="neck" class="charSlot">
+                        <span class="itemText rounded">Necklace</span>
+                    </div>
+
+
+
+                    <div id="bodyA" class="charSlot">
+                        <span class="itemText rounded">Chest</span>
+                    </div>
+
+
+                    <div id="offHand" class="charSlot">
+                        <span class="itemText rounded">Off-Hand</span>
+                    </div>
+
+
+                    <div id="hands" class="charSlot">
+                        <span class="itemText rounded">Gauntlets</span>
+                    </div>
+
+
+                    <div id="mainHand" class="charSlot">
+                        <span class="itemText rounded">Main-Hand</span>
+                    </div>
+
+
+                    <div id="legs" class="charSlot">
+                        <span class="itemText rounded">Greaves</span>
+                    </div>
+
+
+                    <div id="charHea"></div>
+
+                    <div id="ring1" class="charSlot d-inline">
+                    </div>
+                    <div id="ring2" class="charSlot d-inline">
+                    </div>
+                    <div>
+                    </div>
+                    <span class="rings d-inline rounded" style="margin-left: 20px">Ring 1</span>
+                    <span class="rings d-inline rounded" style="margin-left: 20px">Ring 2</span>
+
+                </div>
+            </div>
+
+
+            <div id="colRight" class="col-3 mt-3">
+                <div class="" style="width: 300px">
+                    <div id="singlItem" class="border border-light rounded mb-5" style="width: 300px">
+                        <ul class="list-group">
+                            <li class="list-group-item">Item name: <span id="itemType"></span></li>
+                            <li class="list-group-item">
+                                <div class="itemSlot"></div>
+                            </li>
+                            <li class="list-group-item">Stat Boost: <span id="boost1"></span></li>
+                            <li class="list-group-item">Stat Boost: <span id="boost1"></span></li>
+                            <li class="list-group-item">Stat Boost: <span id="boost1"></span></li>
+                            <li class="list-group-item">Stat Boost: <span id="boost1"></span></li>
+                        </ul>
+                    </div>
+                    <div id="description" class="border border-light rounded mt-5" style="width: 300px">
+                        <p class="ml-1">Description:</p>
+                        <textarea name="showText" id="commentText" cols="39" rows="10" readonly></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</body>
+
+</html>
