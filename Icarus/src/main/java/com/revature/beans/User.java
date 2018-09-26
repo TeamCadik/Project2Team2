@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user")
@@ -23,7 +23,7 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private Integer isDeveloper;
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="user")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="characterId")
 	private Set<Character> characters;
 	
 	public User() {
