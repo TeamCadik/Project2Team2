@@ -23,6 +23,7 @@ public class Build {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="build")
 	@SequenceGenerator(name="build", sequenceName="build_seq", allocationSize=1)
 	private Integer buildId;
+
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="armourId")
 	@MapKey(name = "armourType")
@@ -32,6 +33,7 @@ public class Build {
 	Map<String, Weapon> weapons = new HashMap<String, Weapon>();
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="buildId")
+
 	private Set<Comment> comments;
 	
 	public Build() {
@@ -53,6 +55,8 @@ public class Build {
 	public void setBuildId(Integer buildId) {
 		this.buildId = buildId;
 	}
+
+
 
 
 
