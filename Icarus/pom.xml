@@ -4,10 +4,7 @@
   <artifactId>Icarus</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-<<<<<<< HEAD
-=======
-  
->>>>>>> 033f5f4ea656dd1db7530439f7f0e0f4fffb98f0
+
   <build>
 		<plugins>
 			<plugin>
@@ -95,8 +92,4 @@
 			<version>11.2.0</version>
 		</dependency>
 	</dependencies>
-<<<<<<< HEAD
 </project>
-=======
-</project>
->>>>>>> 033f5f4ea656dd1db7530439f7f0e0f4fffb98f0
