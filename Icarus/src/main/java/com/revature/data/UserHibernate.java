@@ -28,11 +28,14 @@ public class UserHibernate implements UserDAO{
 	}
 
 	@Override
-	public User getUser(String username, String password) {
+	public User getUser(String username) {
 		Session s = hu.getSession();
-		String query = "FROM Character where username=:username and password=:password";
-		Query<User> user =  s.createQuery(query, User.class);
-		return (User) user;
+		String query = "from User u where u.username=:username";
+		Query<User> q =  s.createQuery(query, User.class);
+		q.setParameter("username", username);
+		User u = q.getSingleResult();
+		s.close();
+		return (User) u;
 	}
 
 

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,6 +14,7 @@ public class Weapon {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="weapon")
 	@SequenceGenerator(name="weapon", sequenceName="weapon_seq", allocationSize=1)
+	@JoinColumn(name="weaponId", insertable=false, updatable=false)
 	private Integer weaponId;
 	private String weaponType;
 	private Integer attackModifier;

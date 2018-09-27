@@ -1,11 +1,11 @@
 package com.revature.beans;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
-@Entity
-@Table(name="Comments")
+@Embeddable
 public class Comment {
+	@Column(name="buildId")
 	private Integer buildId;
 	private String commentStr;
 	public Integer getBuildId() {
