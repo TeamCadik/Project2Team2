@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Character } from '../user-profile';
+import { Character } from '../shared/user-profile';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { UserProfileService }  from '../user-profile.service';
+import { UserProfileService }  from '../shared/user-profile.service';
 
 @Component({
   selector: 'app-user-profile-detail',

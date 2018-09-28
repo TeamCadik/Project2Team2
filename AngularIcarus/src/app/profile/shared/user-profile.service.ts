@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Character } from './user-profile';
 import { CHARACTERS } from './mock-user-profiles';
 import { Observable, of } from 'rxjs';
-import { MessageService } from './message.service';
+import { MessageService } from '../../shared/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UrlService } from './url.service';
+import { UrlService } from '../../shared/url.service';
 import { map } from 'rxjs/operators';
 
 @Injectable({

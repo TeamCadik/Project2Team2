@@ -1,7 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserProfileDetailComponent } from './user-profile-detail/user-profile-detail.component';
+import { UserProfileComponent } from '../profile/user-profile/user-profile.component';
+import { UserProfileDetailComponent } from '../profile/user-profile-detail/user-profile-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [

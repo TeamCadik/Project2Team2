@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserProfileDetailComponent } from './user-profile-detail/user-profile-detail.component';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { UserProfileDetailComponent } from './profile/user-profile-detail/user-profile-detail.component';
 import { MessagesComponent } from './messages/messages.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing/app-routing.module';
 
 @NgModule({
   declarations: [
