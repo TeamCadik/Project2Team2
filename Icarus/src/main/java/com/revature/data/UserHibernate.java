@@ -1,5 +1,6 @@
 package com.revature.data;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -18,9 +19,14 @@ public class UserHibernate implements UserDAO{
 	public User addUser(User user) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.save(user);
-		t.commit();
-		s.close();
+		try {
+			s.save(user);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+		} finally {
+			s.close();
+		}
 		return user;
 	}
 

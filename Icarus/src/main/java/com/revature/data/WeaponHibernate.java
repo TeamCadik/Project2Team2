@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,14 @@ public class WeaponHibernate implements WeaponDAO{
 	public Weapon addWeapon(Weapon weapon) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.save(weapon);
-		t.commit();
-		s.close();
+		try {
+			s.save(weapon);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+		} finally {
+			s.close();
+		}
 		return weapon;
 	}
 

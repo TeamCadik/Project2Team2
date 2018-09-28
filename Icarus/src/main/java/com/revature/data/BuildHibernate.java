@@ -23,9 +23,14 @@ public class BuildHibernate implements BuildDAO{
 	public Build addBuild(Build build) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.save(build);
-		t.commit();
-		s.close();
+		try {
+			s.save(build);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+		} finally {
+			s.close();
+		}
 		return build;
 	}
 

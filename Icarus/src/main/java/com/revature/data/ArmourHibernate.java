@@ -24,9 +24,14 @@ public class ArmourHibernate implements ArmourDAO{
 	public Armour addArmour(Armour armour) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.save(armour);
-		t.commit();
-		s.close();
+		try {
+			s.save(armour);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+		} finally {
+			s.close();
+		}
 		return armour;
 	}
 

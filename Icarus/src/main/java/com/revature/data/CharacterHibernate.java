@@ -23,9 +23,14 @@ public class CharacterHibernate implements CharacterDAO{
 	public Character addCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.save(character);
-		t.commit();
-		s.close();
+		try {
+			s.save(character);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+		} finally {
+			s.close();
+		}
 		return character;
 	}
 

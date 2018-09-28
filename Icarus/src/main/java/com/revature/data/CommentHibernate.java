@@ -24,9 +24,14 @@ public class CommentHibernate implements CommentDAO{
 	public Comment addComment(Comment comment) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.save(comment);
-		t.commit();
-		s.close();
+		try {
+			s.save(comment);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+		} finally {
+			s.close();
+		}
 		return comment;
 	}
 
