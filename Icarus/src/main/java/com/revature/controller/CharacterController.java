@@ -15,7 +15,7 @@ import com.revature.beans.Build;
 import com.revature.beans.Character;
 
 @RestController
-@RequestMapping(value="/profile")
+@RequestMapping(value="/character")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CharacterController {
 

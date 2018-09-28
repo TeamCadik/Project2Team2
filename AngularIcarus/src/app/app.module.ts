@@ -21,6 +21,14 @@ const routes=[
   {
     path:'armoury',
     component: ArmouryComponent
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent
+  },
+  {
+    path: 'character/:id',
+    component: UserProfileDetailComponent
   }
 ]
 
@@ -28,17 +36,17 @@ const routes=[
   declarations: [
     AppComponent,
     BuildComponent,
-    ArmouryComponent
+    ArmouryComponent,
+    UserProfileComponent,
+    UserProfileDetailComponent,
+    MessagesComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(routes),
-    UserProfileComponent,
-    UserProfileDetailComponent,
     FormsModule,
-    AppRoutingModule,
-    MessagesComponent
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
