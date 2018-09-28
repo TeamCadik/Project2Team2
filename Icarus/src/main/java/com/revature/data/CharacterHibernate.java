@@ -8,12 +8,16 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Character;
 import com.revature.utils.HibernateUtil;
 
+@Component
 public class CharacterHibernate implements CharacterDAO{
-	private HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private HibernateUtil hu;
 
 	@Override
 	public int addUser(Character character) {
@@ -42,9 +46,7 @@ public class CharacterHibernate implements CharacterDAO{
 	@Override
 	public Set<Character> getAllCharacters() {
 		Session s = hu.getSession();
-		String query = "FROM Chracter";
-		Query<Character> q = s.createQuery(query, Character.class);
-		List<Character> charList = q.getResultList();
+		List<Character> charList = s.createQuery("From com.revature.beans.Character", Character.class).list();
 		Set<Character> charSet = new HashSet<Character>();
 		charSet.addAll(charList);
 		return charSet;
