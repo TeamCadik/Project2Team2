@@ -23,8 +23,7 @@ public class Build {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="build")
 	@SequenceGenerator(name="build", sequenceName="build_seq", allocationSize=1)
 	private Integer buildId;
-
-	
+	private String description;
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="armourId")
 	@MapKey(name = "armourType")
 	Map<String, Armour> armours = new HashMap<String, Armour>();
@@ -33,9 +32,7 @@ public class Build {
 	Map<String, Weapon> weapons = new HashMap<String, Weapon>();
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="buildId")
-
 	private Set<Comment> comments;
-	
 	public Build() {
 		super();
 	}
@@ -56,10 +53,30 @@ public class Build {
 		this.buildId = buildId;
 	}
 
+	public String getDescription() {
+		return description;
+	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
+	public Map<String, Armour> getArmours() {
+		return armours;
+	}
 
+	public void setArmours(Map<String, Armour> armours) {
+		this.armours = armours;
+	}
 
+	public Map<String, Weapon> getWeapons() {
+		return weapons;
+	}
+
+	public void setWeapons(Map<String, Weapon> weapons) {
+		this.weapons = weapons;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -67,6 +84,7 @@ public class Build {
 		result = prime * result + ((armours == null) ? 0 : armours.hashCode());
 		result = prime * result + ((buildId == null) ? 0 : buildId.hashCode());
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((weapons == null) ? 0 : weapons.hashCode());
 		return result;
 	}
@@ -95,6 +113,11 @@ public class Build {
 				return false;
 		} else if (!comments.equals(other.comments))
 			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
 		if (weapons == null) {
 			if (other.weapons != null)
 				return false;
@@ -105,7 +128,7 @@ public class Build {
 
 	@Override
 	public String toString() {
-		return "Build [buildId=" + buildId + ", armours=" + armours + ", weapons=" + weapons + ", comments=" + comments
-				+ "]";
+		return "Build [buildId=" + buildId + ", description=" + description + ", armours=" + armours + ", weapons="
+				+ weapons + ", comments=" + comments + "]";
 	}
 }
