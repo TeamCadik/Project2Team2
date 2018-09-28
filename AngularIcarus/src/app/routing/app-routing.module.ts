@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes), HttpClientModule
+    HttpClientModule
   ],
   exports: [
     RouterModule

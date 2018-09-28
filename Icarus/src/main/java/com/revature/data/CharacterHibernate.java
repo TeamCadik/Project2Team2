@@ -20,7 +20,7 @@ public class CharacterHibernate implements CharacterDAO{
 	private HibernateUtil hu;
 
 	@Override
-	public Character addUser(Character character) {
+	public Character addCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
 		try {

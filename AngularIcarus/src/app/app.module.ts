@@ -33,7 +33,7 @@ const routes=[
   imports: [
     HttpClientModule,
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
     UserProfileComponent,
     UserProfileDetailComponent,
     FormsModule,
