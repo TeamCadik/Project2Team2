@@ -20,19 +20,18 @@ public class CharacterHibernate implements CharacterDAO{
 	private HibernateUtil hu;
 
 	@Override
-	public int addUser(Character character) {
+	public Character addUser(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		Integer id = 0;
 		try {
-			id = (Integer) s.save(character);
+			s.save(character);
 			t.commit();
 		} catch(HibernateException e) {
 			t.rollback();
 		} finally {
 			s.close();
 		}
-		return id;
+		return character;
 	}
 
 	@Override
