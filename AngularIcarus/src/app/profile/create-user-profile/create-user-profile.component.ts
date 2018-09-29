@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CreateUserProfileService } from '../shared/create-user-profile.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserProfileService } from '../shared/user-profile.service';
 import { Character } from '../shared/user-profile';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-user-profile',
@@ -9,8 +10,13 @@ import { Character } from '../shared/user-profile';
 })
 export class CreateUserProfileComponent implements OnInit {
   @Input() character: Character;
+  @Output() submitted = new EventEmitter<boolean>();
 
-  submitted = false;
+  constructor(
+    // private route: ActivatedRoute,
+    private userProfileService: UserProfileService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     if (!this.character) {
@@ -18,6 +24,17 @@ export class CreateUserProfileComponent implements OnInit {
     }
   }
 
-  onSubmit() { this.submitted = true; }
+  updateCharacter(): void {
+    console.log('update character');
+    this.userProfileService.updateCharacter(this.character).subscribe(
+      character=>{
+        this.character = character;
+        this.submitted.emit(true);
+      }
+    )
+  }
 
+  goBack(): void {
+    this.location.back();
+  }
 }
