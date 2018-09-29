@@ -1,0 +1,115 @@
+<div *ngIf="hero">
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div>
+      <label>name:
+        <input [(ngModel)]="hero.name" placeholder="name"/>
+      </label>
+  </div>
+  
+ <div *ngIf="selectedRItem">
+    {{selectedRItem.name}} equipped <br /> 
+  </div>
+  <div *ngIf="selectedLItem">
+    {{selectedLItem.name}} equipped <br /> 
+  </div>
+  <span>id: </span>{{hero.id}}<br /> 
+  <span>Hp: </span>{{hero.hp}}<br /> 
+  <span>Strength: </span>{{hero.str}}<br /> 
+  <span>Intelligence: </span>{{hero.int}}<br /> 
+  <span>Dexterity: </span>{{hero.dex}}<br /> 
+  
+ <div *ngIf="itemMod; else check">
+    <span>Defense: </span>{{hero.def}}({{hero.def+itemMod.defMod}})<br /> 
+    <span>Attack: </span>{{hero.att}}({{hero.att+itemMod.attMod}})<br /> 
+
+ </div>
+ 
+ <ng-template #check>
+    <span>Defense: </span>{{hero.def}}<br /> 
+    <span>Attack: </span>{{hero.att}}<br /> 
+
+ </ng-template>
+ <!--<div *ngIf="selectedRItem; else check">
+    {{selectedRItem.name}} equipped <br /> 
+    <div *ngIf="selectedLItem; else noL">
+    {{selectedLItem.name}} equipped <br /> 
+      <span>Defense: </span>{{hero.def}}({{hero.def+selectedLItem.defMod+selectedRItem.defMod}})<br /> 
+      <span>Attack: </span>{{hero.att}}({{hero.att+selectedLItem.attMod+selectedRItem.attMod}})<br /> 
+    </div>
+    <ng-template #noL>
+        <span>Defense: </span>{{hero.def}}({{hero.def+selectedRItem.defMod}})<br /> 
+        <span>Attack: </span>{{hero.att}}({{hero.att+selectedRItem.attMod}})<br /> 
+
+    </ng-template>
+  </div>
+
+  <ng-template #check>
+      <div *ngIf="selectedLItem; else weak">
+      {{selectedLItem.name}} equipped <br /> 
+        <span>Defense: </span>{{hero.def}}({{hero.def+selectedLItem.defMod}})<br /> 
+        <span>Attack: </span>{{hero.att}}({{hero.att+selectedLItem.attMod}})<br /> 
+      </div>
+      
+    <ng-template #noL>
+      <span>Defense: </span>{{hero.def}}<br /> 
+      <span>Attack: </span>{{hero.att}}<br /> 
+    </ng-template>
+
+  </ng-template>-->
+
+  <div>
+      Choose your Left hand
+
+  </div>
+  <select [(ngModel)]="left">
+    <ng-container *ngFor="let left of items"
+      [class.selected]="left === selectedLItem"
+      (click)="clearDisplay()">
+    <ng-container *ngIf="left.itemType == 'Sheild'">
+      <option [ngValue]="left">{{left.name}}</option>
+    </ng-container>
+
+    </ng-container>
+  </select>
+
+  <button (click)="onSelectL(left)">Equip</button>
+  <button (click)="onSelectLDisplay(left)">Check stats</button>
+  <button (click)="unequipL()">UnEquip</button>
+  <div *ngIf="displayLItem">
+    <h3>{{left.name | uppercase}}</h3>
+    <label>Defense Modifier:</label>{{left.defMod}}<br /> 
+    <label>Attack Modifier:</label>{{left.attMod}}<br /> 
+  </div>
+  
+  <div>
+      <br /> 
+    Choose your Right hand
+
+</div>
+  <select [(ngModel)]="right">
+    <ng-container *ngFor="let right of items"
+      [class.selected]="right === selectedRItem"
+      (click)="clearDisplay()">
+      <ng-container *ngIf="right.itemType == 'Weapon'">
+        <option [ngValue]="right">{{right.name}}</option>
+      </ng-container>
+    </ng-container>
+  </select>
+
+  <button (click)="onSelectR(right)">Equip</button>
+  <button (click)="onSelectRDisplay(right)">Check stats</button>
+  <button (click)="unequipR()">UnEquip</button>
+  <div *ngIf="displayRItem">
+    <h3>{{right.name | uppercase}}</h3>
+    <label>Defense Modifier:</label>{{right.defMod}}<br /> 
+    <label>Attack Modifier:</label>{{right.attMod}}
+  </div>
+
+
+
+
+    
+  <br /> 
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
