@@ -28,7 +28,7 @@ public class CharacterController {
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
-	public Character getCharacter(@PathVariable("characterId") int id) {
+	public Character getCharacter(@PathVariable("id") int id) {
 		return cd.getCharacterById(id);
 	}
 	
