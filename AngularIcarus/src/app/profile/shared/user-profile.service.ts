@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Character } from './user-profile';
-import { CHARACTERS } from './mock-user-profiles';
 import { Observable, of } from 'rxjs';
-import { MessageService } from '../../shared/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlService } from '../../shared/url.service';
 import { map } from 'rxjs/operators';
@@ -15,12 +13,15 @@ export class UserProfileService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService,
-    private urlSource: UrlService) { }
+    private urlSource: UrlService
+    ) { }
 
   getCharacter(id: number): Observable<Character> {
-    this.messageService.add(`UserProfileService: fetched hero id=${id}`);
-    return of(CHARACTERS.find(character => character.characterId === id));
+    //this.messageService.add(`UserProfileService: fetched hero id=${id}`);
+    //return of(CHARACTERS.find(character => character.characterId === id));
+    return this.http.get(this.charactersUrl + '/' + id, {withCredentials: true}).pipe(
+      map(resp => resp as Character)
+    );
   }
 
   getCharacters(): Observable<Character[]> {
@@ -29,9 +30,5 @@ export class UserProfileService {
 
     return this.http.get(this.charactersUrl, { withCredentials: true }).pipe(
       map( resp => resp as Character[] ));
-  }
-
-  private log(message: string) {
-    this.messageService.add(`UserProfileService: ${message}`);
   }
 }

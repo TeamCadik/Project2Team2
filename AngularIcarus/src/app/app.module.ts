@@ -9,8 +9,9 @@ import { ArmouryComponent } from './build/armoury/armoury.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 import { UserProfileDetailComponent } from './profile/user-profile-detail/user-profile-detail.component';
-import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './routing/app-routing.module';
+import { CreateUserProfileComponent } from './profile/create-user-profile/create-user-profile.component';
+import { SelectBuildComponent } from './profile/select-build/select-build.component';
 
 const routes=[
   {
@@ -29,6 +30,14 @@ const routes=[
   {
     path: 'character/:id',
     component: UserProfileDetailComponent
+  },
+  {
+    path: 'add-character',
+    component: CreateUserProfileComponent
+  },
+  {
+    path: 'build/select',
+    component: SelectBuildComponent
   }
 ]
 
@@ -39,7 +48,8 @@ const routes=[
     ArmouryComponent,
     UserProfileComponent,
     UserProfileDetailComponent,
-    MessagesComponent
+    CreateUserProfileComponent,
+    SelectBuildComponent
   ],
   imports: [
     HttpClientModule,
