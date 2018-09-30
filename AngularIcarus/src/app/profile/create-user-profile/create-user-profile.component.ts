@@ -20,18 +20,19 @@ export class CreateUserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.character) {
-      this.character = new Character();
+      this.character = new Character(null, 1, '', 1, 1, 2, 3, 1, 2, 3);
     }
   }
 
   updateCharacter(): void {
     console.log('update character');
     this.userProfileService.updateCharacter(this.character).subscribe(
-      character=>{
+      character => {
         this.character = character;
         this.submitted.emit(true);
       }
-    )
+    );
+    console.log(this.character);
   }
 
   goBack(): void {

@@ -30,12 +30,18 @@ export class UserProfileService {
 
   updateCharacter(character: Character): Observable<Character> {
     const body = JSON.stringify(character);
-    if (!character.characterId) {
-      return this.http.post(this.charactersUrl, body, {headers: this.headers, withCredentials: true})
-      .pipe(map(resp => resp as Character));
+    if(character.characterId) {
+      console.log('Put');
+      const url = this.charactersUrl+'/'+character.characterId;
+      return this.http.put(url, body, {headers: this.headers, withCredentials: true}).pipe (
+        map(resp => resp as Character)
+      );
+    } else {
+      console.log('Post');
+      return this.http.post(this.charactersUrl, body,
+        { headers: this.headers, withCredentials: true}).pipe(
+          map(resp => resp as Character)
+      );
     }
-    const url = this.charactersUrl + '/' + character.characterId;
-    return this.http.put(url, body, {headers: this.headers, withCredentials: true})
-    .pipe(map(resp => resp as Character));
   }
 }
