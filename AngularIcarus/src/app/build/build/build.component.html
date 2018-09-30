@@ -1,0 +1,58 @@
+<div *ngIf="openBuild">
+  <tr>
+    <td data-title="Build #">{{openBuild.buildId}}</td>
+    <td data-title="Armour">
+      <ul>
+        <li>{{openBuild.mainHand.description}}</li>
+        <li>{{openBuild.offHand.description}}</li>
+      </ul>
+    </td>
+    <td data-title="Weapons">
+      <ul>
+        <li>{{openBuild.head.description}}</li>
+        <li>{{openBuild.torso.description}}</li>
+        <li>{{openBuild.legs.description}}</li>
+        <li>{{openBuild.gloves.description}}</li>
+      </ul>
+    </td>
+    <td data-title="Description">{{openBuild.description}}</td>
+    <td>
+        <button class="btn btn-primary" (click)="viewBuild()">View Build</button>
+    </td>
+  </tr>
+</div>
+
+
+<!-- <div class="container border" *ngIf="openBuild">
+  <div class="row">
+    <div>
+      <h4>Build #:</h4>
+      <div>
+        <p>{{openBuild.buildId}}</p>
+      </div>
+    </div>
+    <div>
+      <h4>Armour:</h4>
+      <ul>
+        <li>{{openBuild.head.description}}</li>
+        <li>{{openBuild.torso.description}}</li>
+        <li>{{openBuild.legs.description}}</li>
+        <li>{{openBuild.gloves.description}}</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Weapons:</h4>
+      <ul>
+        <li>{{openBuild.mainHand.description}}</li>
+        <li>{{openBuild.offHand.description}}</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Description:</h4>
+      <div>
+        <p>{{openBuild.description}}</p>
+      </div>
+      <p>-----------------------------------</p>
+    </div>
+  </div>
+</div> -->
