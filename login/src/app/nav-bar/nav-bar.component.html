@@ -1,0 +1,60 @@
+<style>
+    ul {
+        list-style-type: none;
+        margin: 10;
+        padding: 0;
+        background-color: #f1f1f1
+    }
+
+    /* to display option of nav bar horizontally */
+    li {
+        display: inline;
+        color: #000;
+        padding: 8px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #555;
+        color: white;
+    }
+</style>
+
+
+<nav class="navbar">
+    <a class="nav" routerLink="/armoury">
+        <!--route to homepage-->
+        <!-- <span class="badge-primary">{{title}}</span> -->
+    </a>
+    <!-- <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button> -->
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item">
+              <a class="nav-link" routerLink="/books">Books</a>
+          </li> -->
+            <li class="nav-item">
+                <a href="#char-select" class="nav-link" routerLink="/home-page">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#view-char" class="nav-link" routerLink="/view-prof">View Profiles</a>
+            </li>
+            <li class="nav-item">
+                <a href="#char-select" class="nav-link" routerLink="/char-select">Character Select</a>
+            </li>
+
+            <!-- <li class="nav-item">
+                <a href="#view-char" class="nav-link" routerLink="/char-create">Create Character</a>
+            </li> -->
+
+            <!-- <li class="nav-item">
+                <a href="#view-char" class="nav-link" routerLink="/CE-builds">Create/Edit Builds</a>
+            </li> -->
+
+        </ul>
+
+        <!-- <app-login></app-login> -->
+    </div>
+</nav>

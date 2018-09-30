@@ -1,0 +1,12 @@
+<h1>{{Login}}</h1>
+<h1>Login</h1>
+
+<ng-container *ngIf="!loggedUser; else display">
+Username:
+<input type="text" [(ngModel)]="username">
+
+Password:
+<input type="text" id="password" [(ngModel)]="password" (keyup.enter)="login()">
+<br>
+<button class="btn btn-primary" (click)="login()">Login</button>
+</ng-container>
