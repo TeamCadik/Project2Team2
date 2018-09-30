@@ -19,9 +19,7 @@ export class UserService {
   constructor(private urlSource: UrlService, private http: HttpClient) { }
 
   login(username: string, password: string): Observable<CurrentUser> {
-    //console.log(username+' '+password);
     if (username && password) {
-      // we need to login.
       const body = `user=${username}&pass=${password}`;
       console.log(body);
       return this.http.post(this.appUrl, body, { headers: this.headers, withCredentials: true })
@@ -33,8 +31,7 @@ export class UserService {
           return user;
         }));
     } else {
-      // we need to check if we're logged in.
-      return this.http.get(this.appUrl, { withCredentials: true }) // ajax basically -> sending the request to the body
+      return this.http.get(this.appUrl, { withCredentials: true })
         .pipe(map(resp => {
           const user: CurrentUser = resp as CurrentUser;
           if (user) {
