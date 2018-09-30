@@ -8,7 +8,7 @@ import { UserProfileService } from '../shared/user-profile.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  
+
   characters: Character[];
 
   constructor(private userProfileService: UserProfileService) { }

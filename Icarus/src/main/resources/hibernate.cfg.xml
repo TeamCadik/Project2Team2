@@ -23,5 +23,6 @@
 		<mapping class="com.revature.beans.Build"/>
 		<mapping class="com.revature.beans.Armour"/>
 		<mapping class="com.revature.beans.Weapon"/>
+		<mapping class="com.revature.beans.Comment"/>
 	</session-factory>
 </hibernate-configuration>

@@ -20,7 +20,7 @@ public class CharacterHibernate implements CharacterDAO{
 	private HibernateUtil hu;
 
 	@Override
-	public Character addUser(Character character) {
+	public Character addCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
 		try {
@@ -63,7 +63,7 @@ public class CharacterHibernate implements CharacterDAO{
 	}
 
 	@Override
-	public void deleteUser(Character character) {
+	public void deleteCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
 		s.update(character);
@@ -72,7 +72,7 @@ public class CharacterHibernate implements CharacterDAO{
 	}
 
 	@Override
-	public void updateUser(Character character) {
+	public void updateCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
 		s.delete(character);

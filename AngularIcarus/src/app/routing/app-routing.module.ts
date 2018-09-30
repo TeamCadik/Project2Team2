@@ -1,16 +1,14 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserProfileComponent } from '../profile/user-profile/user-profile.component';
-import { UserProfileDetailComponent } from '../profile/user-profile-detail/user-profile-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 
-const routes: Routes = [
-  { path: 'profile', component: UserProfileComponent},
-  { path: 'character/:id', component: UserProfileDetailComponent }
-];
-
 @NgModule({
-  exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes), HttpClientModule ]
+  imports: [
+    HttpClientModule
+  ],
+  exports: [
+    RouterModule
+  ],
+  declarations: []
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

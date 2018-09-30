@@ -1,11 +1,19 @@
 package com.revature.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-@Embeddable
+@Entity
+@Table(name ="Comments")
 public class Comment {
-	@Column(name="buildId")
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="comment_seq")
+	@SequenceGenerator(name="comment_seq", sequenceName="comment_seq", allocationSize=1)
+	private Integer commentId;
 	private Integer buildId;
 	private String commentStr;
 	public Integer getBuildId() {

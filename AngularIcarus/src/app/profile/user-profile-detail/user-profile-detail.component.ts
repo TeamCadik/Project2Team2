@@ -25,7 +25,8 @@ export class UserProfileDetailComponent implements OnInit {
   }
 
   getCharacter(): void {
-    const id = +this.route.snapshot.paramMap.get('characterId');
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
     this.userProfileService.getCharacter(id)
       .subscribe(character => this.character = character);
   }

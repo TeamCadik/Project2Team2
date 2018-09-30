@@ -1,0 +1,48 @@
+<div class="container border" *ngIf="openBuild">
+  <table>
+    <tr>
+      <th>Build#</th>
+      <th>Armour:</th>
+      <th>Weapons:</th>
+      <th>Description:</th>
+    </tr>
+    <tr>
+      <td>{{openBuild.buildId}}</td>
+      <td>
+          <ul>
+              <li *ngFor="let a of openBuild.armourSet">{{a.armourId}}</li>
+            </ul>
+      </td>
+      <td>
+          <ul>
+              <li *ngFor="let w of openBuild.weaponSet">{{w.weaponId}}</li>
+            </ul>
+      </td>
+      <td>{{openBuild.description}}</td>
+    </tr>
+    <!-- <div class="col-sm border card">
+      <h4 class="border border-dark mx-auto">Build# {{openBuild.buildId}}</h4>
+    </div>
+    <div class="col-sm">
+      <br>
+      <h5>Armour:</h5>
+      <ul>
+        <li *ngFor="let a of openBuild.armourSet">{{a.armourId}}</li>
+      </ul>
+      <br>
+      <h5>Weapons:</h5>
+      <ul>
+        <li *ngFor="let w of openBuild.Weapons">{{w.weaponId}}</li>
+      </ul>
+      <div class="row">
+        <div class="col">
+          <h5>Description:</h5>
+        </div>
+        <div class="col">
+          <p>{{openBuild.description}}</p>
+        </div>
+      </div>
+    </div> -->
+
+  </table>
+</div>

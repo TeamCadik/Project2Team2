@@ -8,12 +8,16 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Build;
 import com.revature.utils.HibernateUtil;
 
+@Component
 public class BuildHibernate implements BuildDAO{
-	private HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private HibernateUtil hu;
 
 	@Override
 	public int addBuild(Build build) {
