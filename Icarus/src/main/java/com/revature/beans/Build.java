@@ -152,10 +152,6 @@ public class Build {
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
-
-	public void setWeapons(Map<String, Weapon> weapons) {
-		this.weapons = weapons;
-	}
 	
 	@Override
 	public int hashCode() {
