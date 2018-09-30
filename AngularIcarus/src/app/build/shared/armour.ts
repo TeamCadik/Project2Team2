@@ -1,5 +1,4 @@
 
-
 export class Armour{
     armourId: number;
     armourType: string;

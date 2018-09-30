@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BuildComponent } from './build/build/build.component';
 import { ArmouryComponent } from './build/armoury/armoury.component';
 import { RouterModule } from '@angular/router';
+import { ArmourComponent } from './build/armour/armour.component';
 
 const routes=[
   {
@@ -23,7 +24,8 @@ const routes=[
   declarations: [
     AppComponent,
     BuildComponent,
-    ArmouryComponent
+    ArmouryComponent,
+    ArmourComponent
   ],
   imports: [
     HttpClientModule,

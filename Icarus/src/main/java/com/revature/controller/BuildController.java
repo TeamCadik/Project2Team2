@@ -2,6 +2,7 @@ package com.revature.controller;
 
 
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Build;
-import com.revature.data.BuildDAO;
+import com.revature.services.BuildService;
 
 @RestController
 @RequestMapping(value="/builds")
@@ -21,21 +22,22 @@ import com.revature.data.BuildDAO;
 public class BuildController {
 
 	@Autowired
-	private BuildDAO bd;
-	
+	private BuildService bs;
 	@RequestMapping(method=RequestMethod.GET)
 	public Set<Build> getAll() {
-		return bd.getAllBuilds();
+		Set<Build> allBuilds = bs.getAllBuilds();
+		System.out.println(allBuilds);
+		return bs.getAllBuilds();
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
-	public Build getBear(@PathVariable("id") int id) {
-		return bd.getBuildById(id);
+	public Build getBuild(@PathVariable("id") int id) {
+		return bs.getBuildById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public Set<Build> addBear(@RequestBody Build b) {
-		bd.addBuild(b);
-		return bd.getAllBuilds();
+	public Set<Build> addBuild(@RequestBody Build b) {
+		bs.addBuild(b);
+		return bs.getAllBuilds();
 	}
 }
