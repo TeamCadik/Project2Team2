@@ -153,6 +153,10 @@ public class Build {
 		this.comments = comments;
 	}
 
+	public void setWeapons(Map<String, Weapon> weapons) {
+		this.weapons = weapons;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

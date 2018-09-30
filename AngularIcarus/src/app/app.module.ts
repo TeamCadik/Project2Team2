@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { BuildComponent } from './build/build/build.component';
 import { ArmouryComponent } from './build/armoury/armoury.component';
 import { RouterModule } from '@angular/router';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { UserProfileDetailComponent } from './profile/user-profile-detail/user-profile-detail.component';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { CreateUserProfileComponent } from './profile/create-user-profile/create-user-profile.component';
+import { SelectBuildComponent } from './profile/select-build/select-build.component';
 import { ArmourComponent } from './build/armour/armour.component';
 import { LoginComponent } from './core/login/login.component';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
@@ -20,6 +25,22 @@ const routes=[
   {
     path:'armoury',
     component: ArmouryComponent
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent
+  },
+  {
+    path: 'character/:id',
+    component: UserProfileDetailComponent
+  },
+  {
+    path: 'add-character',
+    component: CreateUserProfileComponent
+  },
+  {
+    path: 'build/select',
+    component: SelectBuildComponent
   }
 ]
 
@@ -28,6 +49,10 @@ const routes=[
     AppComponent,
     BuildComponent,
     ArmouryComponent,
+    UserProfileComponent,
+    UserProfileDetailComponent,
+    CreateUserProfileComponent,
+    SelectBuildComponent
     ArmourComponent,
     LoginComponent,
     NavBarComponent
@@ -35,6 +60,7 @@ const routes=[
   imports: [
     HttpClientModule,
     BrowserModule,
+    AppRoutingModule
     FormsModule,
     RouterModule.forRoot(routes)
   ],
