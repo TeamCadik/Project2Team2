@@ -1,19 +1,21 @@
 package com.revature.data;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Weapon;
 import com.revature.utils.HibernateUtil;
 
+@Component
 public class WeaponHibernate implements WeaponDAO{
-	private HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private HibernateUtil hu;
 
 	@Override
 	public int addWeapon(Weapon weapon) {
@@ -40,14 +42,12 @@ public class WeaponHibernate implements WeaponDAO{
 	}
 
 	@Override
-	public Set<Weapon> getAllWeapon() {
+	public List<Weapon> getAllWeapon() {
 		Session s = hu.getSession();
 		String query = "FROM Weapon";
 		Query<Weapon> q = s.createQuery(query, Weapon.class);
 		List<Weapon> weaponList = q.getResultList();
-		Set<Weapon> weaponSet = new HashSet<Weapon>();
-		weaponSet.addAll(weaponList);
-		return weaponSet;
+		return weaponList;
 	}
 
 	@Override
