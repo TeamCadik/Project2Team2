@@ -18,8 +18,9 @@
         [(ngModel)]="character.characterlevel" name="characterlevel">
     </div>
 
-    <button type="submit" class="btn btn-success"
+    <a routerLink="/profile"><button type="submit" class="btn btn-success"
     [disabled]="!createCharacter.form.valid" (click)="updateCharacter()">Submit</button>
+    </a>
     <button (click)="goBack()" type="submit" class="btn btn-danger" id="backbtn">Cancel</button>
 
   </form>
