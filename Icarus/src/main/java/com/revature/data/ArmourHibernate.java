@@ -1,19 +1,22 @@
 package com.revature.data;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Armour;
 import com.revature.utils.HibernateUtil;
 
+@Component
 public class ArmourHibernate implements ArmourDAO{
-	private HibernateUtil hu = HibernateUtil.getInstance();
+	
+	@Autowired
+	private HibernateUtil hu;
 
 
 	@Override
@@ -41,14 +44,12 @@ public class ArmourHibernate implements ArmourDAO{
 	}
 
 	@Override
-	public Set<Armour> getAllArmour() {
+	public List<Armour> getAllArmour() {
 		Session s = hu.getSession();
 		String query = "FROM Armour";
 		Query<Armour> q = s.createQuery(query, Armour.class);
 		List<Armour> armourList = q.getResultList();
-		Set<Armour> armourSet = new HashSet<Armour>();
-		armourSet.addAll(armourList);
-		return armourSet;	
+		return armourList;	
 	}
 
 	@Override

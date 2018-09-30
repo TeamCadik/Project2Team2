@@ -12,6 +12,7 @@ import { BuildCommentsComponent } from './build-comments/build-comments.componen
 import { BuildComponent } from './build/build/build.component';
 import { ArmouryComponent } from './build/armoury/armoury.component';
 import { RouterModule } from '@angular/router';
+import { ArmourComponent } from './build/armour/armour.component';
 
 const routes=[
   {
@@ -31,6 +32,7 @@ const routes=[
     AppComponent,
     BuildComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     BuildCommentsComponent
   ],
   imports: [
@@ -38,6 +40,10 @@ const routes=[
     FormsModule
 =======
     ArmouryComponent
+=======
+    ArmouryComponent,
+    ArmourComponent
+>>>>>>> 58fbaf8c228471f4c653ecf4f4ec566c6102d232
   ],
   imports: [
     HttpClientModule,

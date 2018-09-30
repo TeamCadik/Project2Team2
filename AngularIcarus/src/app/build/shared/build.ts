@@ -3,8 +3,12 @@ import { Weapon } from '../shared/weapon';
 
 export class Build{
     buildId: number;
-    armourSet: Armour[];
-    weaponSet: Weapon[];
+    head: Armour;
+    torso: Armour;
+    legs: Armour;
+    gloves: Armour;
+    mainHand: Weapon;
+    offHand: Weapon;
     description: string;
 
 }
