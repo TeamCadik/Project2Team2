@@ -44,4 +44,11 @@ export class UserProfileService {
       );
     }
   }
+
+  deleteCharacter(id: number): Observable<Object> {
+    const url = this.charactersUrl + '/' + id;
+    console.log(url);
+    return this.http.delete(url, { headers: this.headers, withCredentials: true}).pipe(
+      map(resp => resp));
+  }
 }

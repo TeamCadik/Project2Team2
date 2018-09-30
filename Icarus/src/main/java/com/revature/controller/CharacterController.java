@@ -34,14 +34,18 @@ public class CharacterController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public Set<Character> addCharacter(@RequestBody Character c) {
-		System.out.println(c);
 		cd.addCharacter(c);
 		return cd.getAllCharacters();
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.PUT)
 	public void updateCharacter(@RequestBody Character c) {
-		System.out.println(c);
 		cd.updateCharacter(c);
+	}
+	
+	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
+	public void deleteCharacter(@PathVariable("id") int id) {
+		Character c = cd.getCharacterById(id);
+		cd.deleteCharacter(c);
 	}
 }
