@@ -153,8 +153,11 @@ public class Build {
 		this.comments = comments;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 76b30ef6c2e1bddadd32220c24d00377d809e0c3
 	
 >>>>>>> 76b30ef6c2e1bddadd32220c24d00377d809e0c3
 	@Override
