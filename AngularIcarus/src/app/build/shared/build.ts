@@ -10,5 +10,4 @@ export class Build{
     mainHand: Weapon;
     offHand: Weapon;
     description: string;
-
 }

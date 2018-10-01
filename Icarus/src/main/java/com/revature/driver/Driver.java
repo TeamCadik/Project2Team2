@@ -13,6 +13,5 @@ public class Driver {
 	private static void testArmourDAO() {
 		/*Build testBuild = bd.getBuildById(1);
 		System.out.println(testBuild.toString());*/
-		
 	}
 }
