@@ -1,0 +1,11 @@
+<div *ngIf="character">
+
+  <h2>{{character.characterName | uppercase}} Details</h2>
+  <div><span>Character Id: </span>{{character.characterId}}</div>
+  <div><span>User Id: </span>{{character.userId}}</div>
+  <div><span>Character Name: </span>{{character.characterName}}</div>
+  <div><span>Character Level: </span>{{character.characterlevel}}</div>
+
+</div>
+
+<button (click)="goBack()">Back</button>

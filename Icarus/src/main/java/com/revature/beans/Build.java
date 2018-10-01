@@ -152,7 +152,11 @@ public class Build {
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 76b30ef6c2e1bddadd32220c24d00377d809e0c3
 	@Override
 	public int hashCode() {
 		final int prime = 31;

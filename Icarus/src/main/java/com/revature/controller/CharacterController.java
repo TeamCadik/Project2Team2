@@ -1,11 +1,5 @@
 package com.revature.controller;
-<<<<<<< HEAD
 
-
-
-import java.util.List;
-=======
->>>>>>> 76b30ef6c2e1bddadd32220c24d00377d809e0c3
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,31 +10,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.data.CharacterDAO;
 import com.revature.beans.Build;
-import com.revature.services.BuildService;
+import com.revature.beans.Character;
 
 @RestController
-@RequestMapping(value="/builds")
+@RequestMapping(value="/character")
 @CrossOrigin(origins = "http://localhost:4200")
-public class BuildController {
+public class CharacterController {
 
 	@Autowired
-	private BuildService bs;
+	private CharacterDAO cd;
+	
 	@RequestMapping(method=RequestMethod.GET)
-	public Set<Build> getAll() {
-		Set<Build> allBuilds = bs.getAllBuilds();
-		System.out.println(allBuilds);
-		return bs.getAllBuilds();
+	public Set<Character> getAll() {
+		return cd.getAllCharacters();
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
-	public Build getBuild(@PathVariable("id") int id) {
-		return bs.getBuildById(id);
+	public Character getCharacter(@PathVariable("id") int id) {
+		return cd.getCharacterById(id);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public Set<Build> addBuild(@RequestBody Build b) {
-		bs.addBuild(b);
-		return bs.getAllBuilds();
+	public Set<Character> addCharacter(@RequestBody Character c) {
+		System.out.println(c);
+		cd.addCharacter(c);
+		return cd.getAllCharacters();
+	}
+	
+	@RequestMapping(value="{id}", method=RequestMethod.PUT)
+	public void updateCharacter(@RequestBody Character c) {
+		System.out.println(c);
+		cd.updateCharacter(c);
 	}
 }
