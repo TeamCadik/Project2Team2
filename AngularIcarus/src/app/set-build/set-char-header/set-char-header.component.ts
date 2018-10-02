@@ -15,7 +15,9 @@ export class SetCharHeaderComponent implements OnInit {
 
   inputName = '';
 
-  @Input () inputlevel: Stats;
+  inputLvl: number = null;
+
+  @Input () chrlevel: Stats;
 
   constructor(private statServe: StatService) { }
 
@@ -30,11 +32,12 @@ export class SetCharHeaderComponent implements OnInit {
   }
 
   onClickUpdateLevel() {
-    if (this.inputlevel.getChLvl !== null) {
-      this.charLvl = this.inputlevel.getChLvl;
-      this.inputlevel.getChLvl = null;
-      this.statServe.getCharLevel(this.inputlevel.getChLvl);
-      console.log(this.inputlevel.getChLvl);
+    if (this.chrlevel.getChLvl !== null) {
+      this.charLvl = this.inputLvl;
+      this.chrlevel.getChLvl = this.charLvl;
+      this.statServe.getCharLevel(this.chrlevel.getChLvl);
+      console.log(this.chrlevel.getChLvl);
+      this.inputLvl = null;
     }
   }
 }

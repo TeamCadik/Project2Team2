@@ -16,9 +16,7 @@ export class SetStatsComponent implements OnInit {
   defense: Stats;
   attack: Stats;
 
-  getChrLvl: Stats;
-
-  constructor(private statsService: StatService) {}
+  constructor(private stats: Stats) {}
 
   ngOnInit() {
   }

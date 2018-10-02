@@ -52,6 +52,10 @@ const routes = [
   {
     path: 'build/select',
     component: SelectBuildComponent
+  },
+  {
+    path: 'set',
+    component: SetBuildComponent
   }
 ];
 

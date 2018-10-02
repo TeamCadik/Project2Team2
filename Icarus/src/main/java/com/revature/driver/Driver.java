@@ -1,6 +1,5 @@
 package com.revature.driver;
 
-import com.revature.beans.Build;
 import com.revature.data.BuildDAO;
 import com.revature.data.BuildHibernate;
 

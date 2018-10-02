@@ -5,6 +5,5 @@ export class Stats {
   serintel: number;
   serdefense: number;
   serattack: number;
-
   getChLvl: number;
 }

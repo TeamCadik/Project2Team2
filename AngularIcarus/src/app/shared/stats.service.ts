@@ -7,28 +7,28 @@ import { Stats } from './stats';
 export class StatService {
   getChLvl: Stats;
 
-  serhitPoints: Stats;
-  serstrength: Stats;
-  serdexterity: Stats;
-  serintel: Stats;
-  serdefense: Stats;
-  serattack: Stats;
+  hitPoints: Stats;
+  strength: Stats;
+  dexterity: Stats;
+  intel: Stats;
+  defense: Stats;
+  attack: Stats;
 
   getCharLevel(chrlvl: number): number {
     this.getChLvl.getChLvl = chrlvl;
 
-    this.serhitPoints.serhitPoints = this.serhitPoints.serhitPoints * (this.getChLvl.getChLvl * 5);
-    console.log(this.serhitPoints.serhitPoints);
+    this.hitPoints.serhitPoints = this.hitPoints.serhitPoints * (this.getChLvl.getChLvl * 5);
+    console.log(this.hitPoints.serhitPoints);
 
-    this.serstrength.serstrength = this.serstrength.serstrength * (this.getChLvl.getChLvl * 5);
+    this.strength.serstrength = this.strength.serstrength * (this.getChLvl.getChLvl * 5);
 
-    this.serdexterity.serdexterity = this.serdexterity.serdexterity * (this.getChLvl.getChLvl * 5);
+    this.dexterity.serdexterity = this.dexterity.serdexterity * (this.getChLvl.getChLvl * 5);
 
-    this.serintel.serintel = this.serintel.serintel * (this.getChLvl.getChLvl * 5);
+    this.intel.serintel = this.intel.serintel * (this.getChLvl.getChLvl * 5);
 
-    this.serdefense.serdefense = this.serdefense.serdefense * (this.getChLvl.getChLvl * 5);
+    this.defense.serdefense = this.defense.serdefense * (this.getChLvl.getChLvl * 5);
 
-    this.serattack.serattack = this.serattack.serattack * (this.getChLvl.getChLvl * 5);
+    this.attack.serattack = this.attack.serattack * (this.getChLvl.getChLvl * 5);
 
     console.log(this.getChLvl.getChLvl);
 
