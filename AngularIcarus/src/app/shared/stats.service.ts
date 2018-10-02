@@ -1,41 +1,42 @@
 import { Injectable } from '@angular/core';
+import { Stats } from './stats';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StatService {
-  getChLvl: number;
+  getChLvl: Stats;
 
-  serhitPoints = 5;
-  serstrength = 5;
-  serdexterity = 5;
-  serintel = 5;
-  serdefense = 5;
-  serattack = 5;
+  serhitPoints: Stats;
+  serstrength: Stats;
+  serdexterity: Stats;
+  serintel: Stats;
+  serdefense: Stats;
+  serattack: Stats;
 
   getCharLevel(chrlvl: number): number {
-    this.getChLvl = chrlvl;
+    this.getChLvl.getChLvl = chrlvl;
 
-    this.serhitPoints = this.serhitPoints * chrlvl;
-    console.log(this.serhitPoints);
+    this.serhitPoints.serhitPoints = this.serhitPoints.serhitPoints * (this.getChLvl.getChLvl * 5);
+    console.log(this.serhitPoints.serhitPoints);
 
-    this.serstrength = this.serstrength * chrlvl;
+    this.serstrength.serstrength = this.serstrength.serstrength * (this.getChLvl.getChLvl * 5);
 
-    this.serdexterity = this.serdexterity * chrlvl;
+    this.serdexterity.serdexterity = this.serdexterity.serdexterity * (this.getChLvl.getChLvl * 5);
 
-    this.serintel = this.serintel * chrlvl;
+    this.serintel.serintel = this.serintel.serintel * (this.getChLvl.getChLvl * 5);
 
-    this.serdefense = this.serdefense * chrlvl;
+    this.serdefense.serdefense = this.serdefense.serdefense * (this.getChLvl.getChLvl * 5);
 
-    this.serattack = this.serattack * chrlvl;
+    this.serattack.serattack = this.serattack.serattack * (this.getChLvl.getChLvl * 5);
 
-    console.log(this.getChLvl);
+    console.log(this.getChLvl.getChLvl);
 
-    return this.getChLvl;
+    return this.getChLvl.getChLvl;
   }
 
   sendCharLevel(): number {
-    console.log(this.getChLvl);
-    return this.getChLvl;
+    console.log(this.getChLvl.getChLvl);
+    return this.getChLvl.getChLvl;
   }
 }

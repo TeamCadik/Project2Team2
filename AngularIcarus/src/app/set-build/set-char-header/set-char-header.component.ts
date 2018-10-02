@@ -1,5 +1,6 @@
 import { StatService } from './../../shared/stats.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Stats } from '../../shared/stats';
 
 @Component({
   selector: 'app-set-char-header',
@@ -13,13 +14,12 @@ export class SetCharHeaderComponent implements OnInit {
   charILevel = '120';
 
   inputName = '';
-  inputLevel = null;
+
+  @Input () inputlevel: Stats;
 
   constructor(private statServe: StatService) { }
 
   ngOnInit() {
-    this.statServe.getCharLevel(this.charLvl);
-    console.log(this.statServe.getChLvl);
   }
 
   onClickUpdateName() {
@@ -30,11 +30,11 @@ export class SetCharHeaderComponent implements OnInit {
   }
 
   onClickUpdateLevel() {
-    if (this.inputLevel !== null) {
-      this.charLvl = this.inputLevel;
-      this.inputLevel = null;
-      this.statServe.getCharLevel(this.charLvl);
-      console.log(this.charLvl);
+    if (this.inputlevel.getChLvl !== null) {
+      this.charLvl = this.inputlevel.getChLvl;
+      this.inputlevel.getChLvl = null;
+      this.statServe.getCharLevel(this.inputlevel.getChLvl);
+      console.log(this.inputlevel.getChLvl);
     }
   }
 }

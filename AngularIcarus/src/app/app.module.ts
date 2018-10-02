@@ -16,14 +16,14 @@ import { ArmourComponent } from './build/armour/armour.component';
 import { LoginComponent } from './core/login/login.component';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 
-const routes=[
+const routes = [
   {
     path: '',
     redirectTo: '/armoury',
     pathMatch: 'full'
   },
   {
-    path:'armoury',
+    path: 'armoury',
     component: ArmouryComponent
   },
   {
@@ -42,7 +42,7 @@ const routes=[
     path: 'build/select',
     component: SelectBuildComponent
   }
-]
+];
 
 @NgModule({
   declarations: [

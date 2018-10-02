@@ -1,5 +1,6 @@
 import { StatService } from './../../../shared/stats.service';
 import { Component, OnInit } from '@angular/core';
+import { Stats } from '../../../shared/stats';
 
 @Component({
   selector: 'app-set-stats',
@@ -8,25 +9,18 @@ import { Component, OnInit } from '@angular/core';
   providers: [StatService]
 })
 export class SetStatsComponent implements OnInit {
-  hitPoints = 5;
-  strength = 5;
-  dexterity = 5;
-  intel = 5;
-  defense = 5;
-  attack = 5;
+  hitPoints: Stats;
+  strength: Stats;
+  dexterity: Stats;
+  intel: Stats;
+  defense: Stats;
+  attack: Stats;
 
-  getChrLvl: number;
+  getChrLvl: Stats;
 
   constructor(private statsService: StatService) {}
 
   ngOnInit() {
-    this.getChrLevel();
-    console.log(this.statsService.getChLvl);
-  }
-
-  getChrLevel() {
-    this.getChrLvl = this.statsService.sendCharLevel();
-    // console.log(this.getChLvl);
   }
 
 }
