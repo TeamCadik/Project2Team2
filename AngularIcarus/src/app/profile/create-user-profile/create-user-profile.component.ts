@@ -3,6 +3,7 @@ import { UserProfileService } from '../shared/user-profile.service';
 import { Character } from '../shared/user-profile';
 import { Location } from '@angular/common';
 import { UserService } from '../../shared/user/user.service';
+import { UserProfileComponent } from './../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-create-user-profile',
@@ -18,7 +19,8 @@ export class CreateUserProfileComponent implements OnInit {
     // private route: ActivatedRoute,
     private userProfileService: UserProfileService,
     private location: Location,
-    private userService: UserService
+    private userService: UserService,
+    private userProfile: UserProfileComponent
   ) {}
 
   ngOnInit(): void {

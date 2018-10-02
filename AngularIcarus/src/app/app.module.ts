@@ -30,16 +30,16 @@ const routes=[
     path: 'profile',
     component: UserProfileComponent
   },
-  {
-    path: 'character/:id',
-    component: UserProfileDetailComponent
-  },
+  // {
+  //   path: 'character/:id',
+  //   component: UserProfileDetailComponent
+  // },
   {
     path: 'add-character',
     component: CreateUserProfileComponent
   },
   {
-    path: 'build/select',
+    path: 'character/:id',
     component: SelectBuildComponent
   }
 ]
@@ -64,7 +64,7 @@ const routes=[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [UserProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

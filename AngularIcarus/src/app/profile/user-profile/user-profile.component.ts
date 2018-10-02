@@ -30,6 +30,6 @@ export class UserProfileComponent implements OnInit {
 
   deleteCharacter(id: number): void {
     this.userProfileService.deleteCharacter(id)
-    .subscribe(p => this.router.navigate(['/profile']));
+    .subscribe(p => { this.ngOnInit(); });
   }
 }
