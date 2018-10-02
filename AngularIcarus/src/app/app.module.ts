@@ -52,7 +52,7 @@ const routes=[
     UserProfileComponent,
     UserProfileDetailComponent,
     CreateUserProfileComponent,
-    SelectBuildComponent
+    SelectBuildComponent,
     ArmourComponent,
     LoginComponent,
     NavBarComponent
@@ -60,7 +60,7 @@ const routes=[
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
