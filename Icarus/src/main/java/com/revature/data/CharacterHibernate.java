@@ -52,12 +52,10 @@ public class CharacterHibernate implements CharacterDAO{
 	}
 	
 	@Override
-	public Set<Character> getAllCharactersByUser(int id) {
-		System.out.println("USERID in DAO: " + id);
+	public Set<Character> getAllCharactersByUser(int userId) {
 		Session s = hu.getSession();
-		String query = "FROM Character where userId = :id";
+		String query = "FROM Character where userId=:userId";
 		Query<Character> q = s.createQuery(query, Character.class);
-		q.setParameter("id", id);
 		List<Character> charList = q.getResultList();
 		Set<Character> charSet = new HashSet<Character>();
 		charSet.addAll(charList);
