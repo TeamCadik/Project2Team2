@@ -47,7 +47,7 @@ public class CharacterController {
 		cd.updateCharacter(c);
 	}
 	
-	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/character/{id}", method=RequestMethod.DELETE)
 	public void deleteCharacter(@PathVariable("id") int id) {
 		Character c = cd.getCharacterById(id);
 		cd.deleteCharacter(c);
