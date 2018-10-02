@@ -1,3 +1,14 @@
+import { SetDropdownComponent } from './set-build/set-center-col/set-dropdown/set-dropdown.component';
+import { SetStatsComponent } from './set-build/set-left-col/set-stats/set-stats.component';
+import { SetViewItemComponent } from './set-build/set-right-col/set-view-item/set-view-item.component';
+import { SetDescriptionComponent } from './set-build/set-right-col/set-description/set-description.component';
+import { SetsComponent } from './set-build/set-center-col/sets/sets.component';
+import { SetCharHeaderComponent } from './set-build/set-char-header/set-char-header.component';
+import { SetRightColComponent } from './set-build/set-right-col/set-right-col.component';
+import { SetCenterColComponent } from './set-build/set-center-col/set-center-col.component';
+import { SetLeftColComponent } from './set-build/set-left-col/set-left-col.component';
+import { SetBuildComponent } from './set-build/set-build.component';
+import { BuildCommentsComponent } from './set-build/set-left-col/build-comments/build-comments.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -16,14 +27,14 @@ import { ArmourComponent } from './build/armour/armour.component';
 import { LoginComponent } from './core/login/login.component';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 
-const routes=[
+const routes = [
   {
     path: '',
     redirectTo: '/armoury',
     pathMatch: 'full'
   },
   {
-    path:'armoury',
+    path: 'armoury',
     component: ArmouryComponent
   },
   {
@@ -41,8 +52,12 @@ const routes=[
   {
     path: 'build/select',
     component: SelectBuildComponent
+  },
+  {
+    path: 'set',
+    component: SetBuildComponent
   }
-]
+];
 
 @NgModule({
   declarations: [
@@ -55,7 +70,18 @@ const routes=[
     SelectBuildComponent,
     ArmourComponent,
     LoginComponent,
-    NavBarComponent
+    NavBarComponent,
+    BuildCommentsComponent,
+    SetBuildComponent,
+    SetLeftColComponent,
+    SetCenterColComponent,
+    SetRightColComponent,
+    SetCharHeaderComponent,
+    SetsComponent,
+    SetDescriptionComponent,
+    SetViewItemComponent,
+    SetStatsComponent,
+    SetDropdownComponent
   ],
   imports: [
     HttpClientModule,
