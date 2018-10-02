@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared/user/user.service';
-import { CurrentUser } from '../../shared/user/current-user';
+import { User } from '../../shared/user/user';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { CurrentUser } from '../../shared/user/current-user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public loggedUser: CurrentUser;
+  public loggedUser: User;
   public username: string;
   public password: string;
 
