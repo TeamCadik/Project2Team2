@@ -4,7 +4,7 @@
 <h2>Your Profile</h2>
 <ul class="characters">
   <li *ngFor="let character of characters">
-    <a routerLink="/character/{{character.characterId}}">
+    <a routerLink="/set">
       <span class="badge">{{character.characterId}}</span> {{character.characterName}}
     </a>
   </li>

@@ -35,7 +35,7 @@ export class UserService {
         .pipe(map(resp => {
           const user: CurrentUser = resp as CurrentUser;
           if (user) {
-            this.user = user.user
+            this.user = user.user;
           }
           return user;
         }));

@@ -6,7 +6,7 @@ import { Stats } from '../../../shared/stats';
   selector: 'app-set-stats',
   templateUrl: './set-stats.component.html',
   styleUrls: ['./set-stats.component.css'],
-  providers: [StatService]
+  providers: [Stats]
 })
 export class SetStatsComponent implements OnInit {
   hitPoints: Stats;
