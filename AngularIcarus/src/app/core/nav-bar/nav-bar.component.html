@@ -33,8 +33,12 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/armoury">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isLoggedIn()&&!isProfilePage()" >
                 <a class="nav-link" routerLink="/profile">View Profile</a>
+            </li>
+            <li class="nav-item" *ngIf="isProfilePage()" >
+                <a class="nav-link" routerLink="/add-character">Create New Character</a>
+            </li>
         </ul>
         <app-login></app-login>
     </div>
