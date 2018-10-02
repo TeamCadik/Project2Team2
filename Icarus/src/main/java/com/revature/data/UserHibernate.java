@@ -1,5 +1,7 @@
 package com.revature.data;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -38,7 +40,12 @@ public class UserHibernate implements UserDAO{
 		Query<User> q =  s.createQuery(query, User.class);
 		q.setParameter("username", username);
 		q.setParameter("password", password);
-		User u = q.getSingleResult();
+		User u =null;
+		try {
+			u = q.getSingleResult();
+		} catch(NoResultException nre){
+			
+		}
 		s.close();
 		return (User) u;
 	}

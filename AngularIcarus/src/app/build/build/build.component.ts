@@ -17,13 +17,9 @@ export class BuildComponent implements OnInit {
     private route: ActivatedRoute) { }
 
     ngOnInit() {
-      const id = +this.route.snapshot.paramMap.get('id');
-      if (id) {
-        this.buildService.getBuild(id).subscribe(
-          build => {
-            this.openBuild = build;
-          }
-        )
-      }
+    }
+
+    viewBuild(){
+      console.log('Here');
     }
 }

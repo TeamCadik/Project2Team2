@@ -12,6 +12,9 @@ import { UserProfileDetailComponent } from './profile/user-profile-detail/user-p
 import { AppRoutingModule } from './routing/app-routing.module';
 import { CreateUserProfileComponent } from './profile/create-user-profile/create-user-profile.component';
 import { SelectBuildComponent } from './profile/select-build/select-build.component';
+import { ArmourComponent } from './build/armour/armour.component';
+import { LoginComponent } from './core/login/login.component';
+import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 
 const routes=[
   {
@@ -49,14 +52,17 @@ const routes=[
     UserProfileComponent,
     UserProfileDetailComponent,
     CreateUserProfileComponent,
-    SelectBuildComponent
+    SelectBuildComponent,
+    ArmourComponent,
+    LoginComponent,
+    NavBarComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
     FormsModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

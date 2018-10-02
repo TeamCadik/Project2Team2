@@ -49,8 +49,7 @@ public class BuildHibernate implements BuildDAO{
 		String query = "FROM Build";
 		Query<Build> q = s.createQuery(query, Build.class);
 		List<Build> buildList = q.getResultList();
-		Set<Build> buildSet = new HashSet<Build>();
-		buildSet.addAll(buildList);
+		Set<Build> buildSet = new HashSet<Build>(buildList);
 		return buildSet;
 	}
 
@@ -60,8 +59,7 @@ public class BuildHibernate implements BuildDAO{
 		String query = "FROM Build where characterId=:characterId";
 		Query<Build> q = s.createQuery(query, Build.class);
 		List<Build> buildList = q.getResultList();
-		Set<Build> buildSet = new HashSet<Build>();
-		buildSet.addAll(buildList);
+		Set<Build> buildSet = new HashSet<Build>(buildList);
 		return buildSet;
 	}
 

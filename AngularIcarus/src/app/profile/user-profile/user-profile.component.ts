@@ -1,3 +1,4 @@
+import { UserService } from './../../shared/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Character } from '../shared/user-profile';
@@ -14,7 +15,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private userProfileService: UserProfileService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
     ) { }
 
   ngOnInit() {
@@ -22,7 +24,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getCharacters(): void {
-    this.userProfileService.getCharacters()
+    this.userProfileService.getCharacters(this.userService.getUser().userId)
       .subscribe(characters => this.characters = characters);
   }
 
