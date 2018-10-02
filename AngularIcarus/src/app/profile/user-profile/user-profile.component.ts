@@ -1,5 +1,6 @@
 import { UserService } from './../../shared/user/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from '../shared/user-profile';
 import { UserProfileService } from '../shared/user-profile.service';
 
@@ -12,8 +13,11 @@ export class UserProfileComponent implements OnInit {
 
   characters: Character[];
 
-  constructor(private userProfileService: UserProfileService,
-    private userService: UserService) { }
+  constructor(
+    private userProfileService: UserProfileService,
+    private router: Router,
+    private userService: UserService
+    ) { }
 
   ngOnInit() {
     this.getCharacters();
@@ -22,5 +26,10 @@ export class UserProfileComponent implements OnInit {
   getCharacters(): void {
     this.userProfileService.getCharacters(this.userService.getUser().userId)
       .subscribe(characters => this.characters = characters);
+  }
+
+  deleteCharacter(id: number): void {
+    this.userProfileService.deleteCharacter(id)
+    .subscribe(p => this.router.navigate(['/profile']));
   }
 }
