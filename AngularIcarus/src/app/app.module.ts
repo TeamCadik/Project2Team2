@@ -30,19 +30,15 @@ const routes=[
     path: 'profile',
     component: UserProfileComponent
   },
-  // {
-  //   path: 'character/:id',
-  //   component: UserProfileDetailComponent
-  // },
-  {
-    path: 'add-character',
-    component: CreateUserProfileComponent
-  },
   {
     path: 'character/:id',
     component: SelectBuildComponent
+  },
+  {
+    path: 'add-character',
+    component: CreateUserProfileComponent
   }
-]
+];
 
 @NgModule({
   declarations: [
