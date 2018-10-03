@@ -11,14 +11,17 @@ import { Comments } from '../../../shared/comment';
 })
 export class BuildCommentsComponent implements OnInit {
   txtAreaVal = '';
-  @Input() comment: Comments;
+  comment: Comments;
   enterComments = '';
 
   onClickAddComment() {
-    if (this.comment.comment !== '') {
-      this.txtAreaVal += this.comment.comment + '\n';
+    if (this.enterComments !== '') {
+      this.txtAreaVal += this.enterComments + '\n';
+      this.commService.currentComments += this.enterComments + '\n';
+      console.log(this.commService.currentComments);
+      this.commService.getComments();
       this.commService.postComments();
-      this.comment.comment = '';
+      this.enterComments = '';
     }
   }
 

@@ -21,6 +21,7 @@ export class SetCharHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   onClickUpdateName() {
@@ -30,13 +31,11 @@ export class SetCharHeaderComponent implements OnInit {
     }
   }
 
-  // onClickUpdateLevel() {
-  //   if (this.chrlevel.getChLvl !== null) {
-  //     this.charLvl = this.inputLvl;
-  //     this.chrlevel.getChLvl = this.charLvl;
-  //     this.statServe.getCharLevel(this.chrlevel.getChLvl);
-  //     console.log(this.chrlevel.getChLvl);
-  //     this.inputLvl = null;
-  //   }
-  // }
+  onClickUpdateLevel() {
+    if (this.charLvl !== null) {
+      this.charLvl = this.inputLvl;
+      console.log(this.charLvl);
+      this.inputLvl = null;
+     }
+   }
 }
