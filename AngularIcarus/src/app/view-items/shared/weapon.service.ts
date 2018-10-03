@@ -5,43 +5,53 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, pipe, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Armour } from '../shared/armour';
+import { Weapon } from '../../build/shared/weapon';
 import { UrlService } from '../../shared/url.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArmourService {
-  private appUrl = this.urlSource.getURL()+'/armours';
+export class WeaponService {
+  private selectedWeapon:Weapon = null;
+
+  private appUrl = this.urlSource.getURL()+'/weapons';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient, private urlSource: UrlService) { }
 
-  getArmoursByBuild(id: number): Observable<Armour[]> {
+  getWeaponsByBuild(id: number): Observable<Weapon[]> {
     return this.http.get(this.appUrl + 'Build' + '/' + id, { withCredentials: true }).pipe(
-      map( resp => resp as Armour[] ));
+      map( resp => resp as Weapon[] ));
   }
 
-  getArmourById(id: number): Observable<Armour> {
+  getWeaponById(id: number): Observable<Weapon> {
     return this.http.get(this.appUrl + '/' + id, { withCredentials: true }).pipe(
-      map( resp => resp as Armour ));
+      map( resp => resp as Weapon ));
   }
 
-  getAllArmour(): Observable<Armour[]> {
+  getAllWeapons(): Observable<Weapon[]> {
     return this.http.get(this.appUrl, { withCredentials: true }).pipe(
-      map( resp => resp as Armour[] ));
+      map( resp => resp as Weapon[] ));
   }
 
-  updateArmour(armour: Armour): Observable<Armour> {
-    const body = JSON.stringify(armour);
-    if(!armour.armourId) {
+  updateWeapon(weapon: Weapon): Observable<Weapon> {
+    const body = JSON.stringify(weapon);
+    if(!weapon.weaponId) {
       return this.http
       .post(this.appUrl, body, {headers: this.headers, withCredentials: true})
-      .pipe(map(resp=>resp as Armour));
+      .pipe(map(resp=>resp as Weapon));
     }
-    const url = this.appUrl+'/'+armour.armourId;
+    const url = this.appUrl+'/'+weapon.weaponId;
     return this.http
     .put(url, body, {headers: this.headers, withCredentials:true})
-    .pipe(map(resp=>resp as Armour));
+    .pipe(map(resp=>resp as Weapon));
+  }
+
+  getSelectedWeapon():Weapon{
+    return this.selectedWeapon;
+  }
+
+  setSelectedArmour(w:Weapon){
+    this.selectedWeapon = w;
   }
 }

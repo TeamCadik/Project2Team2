@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Armour } from '../shared/armour';
 import { ArmourService } from '../shared/armour.service';
+import { Armour } from '../../build/shared/armour';
+import { ItemsComponent } from '../items/items.component';
 
 @Component({
   selector: 'app-armour',
@@ -11,10 +12,14 @@ import { ArmourService } from '../shared/armour.service';
 
 export class ArmourComponent implements OnInit {
   @Input() openArmour : Armour;
-  @Input() openAllArmour : Armour[];
+  
   constructor(private armourService: ArmourService) { }
 
   ngOnInit() {
+  }
+
+  displayArmour(a:Armour){
+    this.armourService.setSelectedArmour(a);
   }
 
 }

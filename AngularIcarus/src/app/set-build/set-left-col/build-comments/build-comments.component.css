@@ -1,0 +1,8 @@
+#commentText{
+  resize: none;
+  overflow-y: scroll;
+}
+
+#textIn{
+  width: 141px;
+}

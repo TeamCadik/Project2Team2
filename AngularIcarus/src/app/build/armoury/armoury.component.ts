@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BuildService } from '../shared/build.service';
-import { ArmourService } from '../shared/armour.service';
+import { ArmourService } from '../../view-items/shared/armour.service';
 import { Build } from '../shared/build';
 import { Armour } from '../shared/armour';
 
