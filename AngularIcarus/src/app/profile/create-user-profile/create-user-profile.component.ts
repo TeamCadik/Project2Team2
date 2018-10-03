@@ -14,6 +14,7 @@ export class CreateUserProfileComponent implements OnInit {
   @Input() character: Character;
   @Input() characters: Character[];
   @Output() submitted = new EventEmitter<boolean>();
+  img = 'https://static.bandainamcoent.eu/high/dark-souls/dark-souls-hd/00-page-setup/ds-hd_game_thumb_408x314.jpg';
 
   constructor(
     // private route: ActivatedRoute,
@@ -25,7 +26,7 @@ export class CreateUserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.character) {
-      this.character = new Character(null, this.getUserId(), '', 1, 1, 2, 3, 1, 2, 3);
+      this.character = new Character(null, this.getUserId(), '', 1, 1, 2, 3, 1, 2, 3, this.img);
     }
   }
 
