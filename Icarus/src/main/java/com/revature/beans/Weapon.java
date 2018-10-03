@@ -16,6 +16,7 @@ public class Weapon {
 	@SequenceGenerator(name="weapon", sequenceName="weapon_seq", allocationSize=1)
 	@JoinColumn(name="weaponId", insertable=false, updatable=false)
 	private Integer weaponId;
+	private String weaponName;
 	private String weaponType;
 	private Integer attackModifier;
 	private Integer defenseModifier;
@@ -31,6 +32,14 @@ public class Weapon {
 
 	public void setWeaponId(Integer weaponId) {
 		this.weaponId = weaponId;
+	}
+
+	public String getWeaponName() {
+		return weaponName;
+	}
+
+	public void setWeaponName(String weaponName) {
+		this.weaponName = weaponName;
 	}
 
 	public String getWeaponType() {
@@ -73,6 +82,7 @@ public class Weapon {
 		result = prime * result + ((defenseModifier == null) ? 0 : defenseModifier.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((weaponId == null) ? 0 : weaponId.hashCode());
+		result = prime * result + ((weaponName == null) ? 0 : weaponName.hashCode());
 		result = prime * result + ((weaponType == null) ? 0 : weaponType.hashCode());
 		return result;
 	}
@@ -106,6 +116,11 @@ public class Weapon {
 				return false;
 		} else if (!weaponId.equals(other.weaponId))
 			return false;
+		if (weaponName == null) {
+			if (other.weaponName != null)
+				return false;
+		} else if (!weaponName.equals(other.weaponName))
+			return false;
 		if (weaponType == null) {
 			if (other.weaponType != null)
 				return false;
@@ -116,7 +131,10 @@ public class Weapon {
 
 	@Override
 	public String toString() {
-		return "Weapon [weaponId=" + weaponId + ", weaponType=" + weaponType + ", attackModifier=" + attackModifier
-				+ ", defenseModifier=" + defenseModifier + ", description=" + description + "]";
+		return "Weapon [weaponId=" + weaponId + ", weaponName=" + weaponName + ", weaponType=" + weaponType
+				+ ", attackModifier=" + attackModifier + ", defenseModifier=" + defenseModifier + ", description="
+				+ description + "]";
 	}
+
+	
 }
