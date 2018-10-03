@@ -32,17 +32,13 @@ const routes=[
   },
   {
     path: 'character/:id',
-    component: UserProfileDetailComponent
+    component: SelectBuildComponent
   },
   {
     path: 'add-character',
     component: CreateUserProfileComponent
-  },
-  {
-    path: 'build/select',
-    component: SelectBuildComponent
   }
-]
+];
 
 @NgModule({
   declarations: [
@@ -64,7 +60,7 @@ const routes=[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [UserProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
