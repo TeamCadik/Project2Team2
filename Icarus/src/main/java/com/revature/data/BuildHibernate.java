@@ -67,7 +67,7 @@ public class BuildHibernate implements BuildDAO{
 	public void deleteBuild(Build build) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.update(build);
+		s.delete(build);
 		t.commit();
 		s.close();			
 	}
@@ -76,7 +76,7 @@ public class BuildHibernate implements BuildDAO{
 	public void updateBuild(Build build) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		s.delete(build);
+		s.update(build);
 		t.commit();
 		s.close();				
 	}

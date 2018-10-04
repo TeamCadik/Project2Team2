@@ -19,7 +19,6 @@ public class ArmourHibernate implements ArmourDAO{
 	@Autowired
 	private HibernateUtil hu;
 
-
 	@Override
 	public int addArmour(Armour armour) {
 		Session s = hu.getSession();
