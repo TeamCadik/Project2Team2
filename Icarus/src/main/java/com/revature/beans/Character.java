@@ -30,7 +30,6 @@ public class Character {
 	private String charImg;
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="buildId")
 	private Set<Build> builds;
-	private String charImg;
 	
 	public Character() {
 		super();
