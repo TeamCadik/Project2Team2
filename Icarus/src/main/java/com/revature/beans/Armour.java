@@ -16,6 +16,7 @@ public class Armour {
 	@SequenceGenerator(name="armour", sequenceName="armour_seq", allocationSize=1)
 	@JoinColumn(name="armourId", insertable=false, updatable=false)
 	private Integer armourId;
+	private String armourName;
 	private String armourType;
 	private Integer defenseModifier;
 	private String stat;
@@ -32,6 +33,14 @@ public class Armour {
 
 	public void setArmourId(Integer armourId) {
 		this.armourId = armourId;
+	}
+
+	public String getArmourName() {
+		return armourName;
+	}
+
+	public void setArmourName(String armourName) {
+		this.armourName = armourName;
 	}
 
 	public String getArmourType() {
@@ -79,6 +88,7 @@ public class Armour {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((armourId == null) ? 0 : armourId.hashCode());
+		result = prime * result + ((armourName == null) ? 0 : armourName.hashCode());
 		result = prime * result + ((armourType == null) ? 0 : armourType.hashCode());
 		result = prime * result + ((defenseModifier == null) ? 0 : defenseModifier.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
@@ -100,6 +110,11 @@ public class Armour {
 			if (other.armourId != null)
 				return false;
 		} else if (!armourId.equals(other.armourId))
+			return false;
+		if (armourName == null) {
+			if (other.armourName != null)
+				return false;
+		} else if (!armourName.equals(other.armourName))
 			return false;
 		if (armourType == null) {
 			if (other.armourType != null)
@@ -131,7 +146,10 @@ public class Armour {
 
 	@Override
 	public String toString() {
-		return "Armour [armourId=" + armourId + ", armourType=" + armourType + ", defenseModifier=" + defenseModifier
-				+ ", stat=" + stat + ", statModifier=" + statModifier + ", description=" + description + "]";
+		return "Armour [armourId=" + armourId + ", armourName=" + armourName + ", armourType=" + armourType
+				+ ", defenseModifier=" + defenseModifier + ", stat=" + stat + ", statModifier=" + statModifier
+				+ ", description=" + description + "]";
 	}
+
+	
 }

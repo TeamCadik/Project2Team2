@@ -1,19 +1,33 @@
 <h2>All Builds:</h2>
 <div class="container">
-    <table class="table">
-        <div>
-            <thead>
-                <tr>
-                    <th>Build #</th>
-                    <th>Weapons</th>
-                    <th>Armour</th>
-                    <th>Description</th>
-                    <th>View Build</th>
-                </tr>
-            </thead>
-        </div>
+    <table class="table table-striped">
+        <thead class="bg-dark">
+            <tr>
+                <th scope="col">Build #</th>
+                <th scope="col">Main Hand</th>
+                <th scope="col">Off Hand</th>
+                <th scope="col">Head Slot</th>
+                <th scope="col">Torso Slot</th>
+                <th scope="col">Legs Slot</th>
+                <th scope="col">Gloves Slot</th>
+                <th scope="col">Description</th>
+                <th scope="col">View Build</th>
+            </tr>
+        </thead>
         <tbody>
-            <app-build *ngFor="let b of builds" [openBuild]="b"></app-build>
+            <tr *ngFor="let b of builds" (click)="viewBuild(b)">
+                <td>{{b.buildId}}</td>
+                <td>{{b.mainHand.weaponName}}</td>
+                <td>{{b.offHand.weaponName}}</td>
+                <td>{{b.head.armourName}}</td>
+                <td>{{b.torso.armourName}}</td>
+                <td>{{b.legs.armourName}}</td>
+                <td>{{b.gloves.armourName}}</td>
+                <td>{{b.description}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary">View Build</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

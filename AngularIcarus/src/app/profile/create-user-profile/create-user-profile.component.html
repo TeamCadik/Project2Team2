@@ -18,6 +18,12 @@
         [(ngModel)]="character.characterlevel" name="characterlevel">
     </div>
 
+    <div class="form-group">
+      <label for="charImg">Character Image</label>
+      <input type="text" class="form-control" id="charImg"
+        [(ngModel)]="character.charImg" name="charImg">
+    </div>
+
     <a routerLink="/profile"><button type="submit" class="btn btn-success"
     [disabled]="!createCharacter.form.valid" (click)="updateCharacter()">Submit</button>
     </a>

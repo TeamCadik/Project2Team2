@@ -1,11 +1,12 @@
 package com.revature.data;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -44,12 +45,12 @@ public class ArmourHibernate implements ArmourDAO{
 	}
 
 	@Override
-	public List<Armour> getAllArmour() {
+	public Set<Armour> getAllArmour() {
 		Session s = hu.getSession();
-		String query = "FROM Armour";
-		Query<Armour> q = s.createQuery(query, Armour.class);
-		List<Armour> armourList = q.getResultList();
-		return armourList;	
+		List<Armour> armourList = s.createQuery("FROM com.revature.beans.Armour", Armour.class).list();;
+		Set<Armour> armourSet = new HashSet<Armour>();
+		armourSet.addAll(armourList);
+		return armourSet;
 	}
 
 	@Override

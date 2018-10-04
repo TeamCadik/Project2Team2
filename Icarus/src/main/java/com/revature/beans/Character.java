@@ -27,21 +27,15 @@ public class Character {
 	private Integer hp;
 	private Integer defense;
 	private Integer attack;
+	private String charImg;
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="buildId")
 	private Set<Build> builds;
+	private String charImg;
 	
 	public Character() {
 		super();
 	}
-
-	public Set<Build> getBuilds() {
-		return builds;
-	}
-
-	public void setBuilds(Set<Build> builds) {
-		this.builds = builds;
-	}
-
+  
 	public Integer getCharacterId() {
 		return characterId;
 	}
@@ -122,12 +116,29 @@ public class Character {
 		this.attack = attack;
 	}
 
+	public String getCharImg() {
+		return charImg;
+	}
+
+	public void setCharImg(String charImg) {
+		this.charImg = charImg;
+	}
+
+	public Set<Build> getBuilds() {
+		return builds;
+	}
+
+	public void setBuilds(Set<Build> builds) {
+		this.builds = builds;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((attack == null) ? 0 : attack.hashCode());
 		result = prime * result + ((builds == null) ? 0 : builds.hashCode());
+		result = prime * result + ((charImg == null) ? 0 : charImg.hashCode());
 		result = prime * result + ((characterId == null) ? 0 : characterId.hashCode());
 		result = prime * result + ((characterName == null) ? 0 : characterName.hashCode());
 		result = prime * result + ((characterlevel == null) ? 0 : characterlevel.hashCode());
@@ -158,6 +169,11 @@ public class Character {
 			if (other.builds != null)
 				return false;
 		} else if (!builds.equals(other.builds))
+			return false;
+		if (charImg == null) {
+			if (other.charImg != null)
+				return false;
+		} else if (!charImg.equals(other.charImg))
 			return false;
 		if (characterId == null) {
 			if (other.characterId != null)
@@ -212,6 +228,6 @@ public class Character {
 		return "Character [characterId=" + characterId + ", userId=" + userId + ", characterName=" + characterName
 				+ ", characterlevel=" + characterlevel + ", strength=" + strength + ", intelligence=" + intelligence
 				+ ", dexterity=" + dexterity + ", hp=" + hp + ", defense=" + defense + ", attack=" + attack
-				+ ", builds=" + builds + "]";
+				+ ", charImg=" + charImg + ", builds=" + builds + "]";
 	}
 }
