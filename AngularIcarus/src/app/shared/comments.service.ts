@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UrlService } from './url.service';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Comment } from '@angular/compiler';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,28 +10,22 @@ import { Observable } from 'rxjs';
 })
 export class CommentsService {
   private appUrl = this.urlSource.getURL() + '/set';
-  private headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-  private buildId = null;
-  private comment: Comment;
-
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+  private buildId = 1;
+  comment: Comments;
   currentComments = '';
 
   constructor(private urlSource: UrlService, private http: HttpClient) { }
 
-  postComments(): Observable<Comments> {
-    console.log(this.currentComments);
-    const body = `commentStr=${this.currentComments}`;
+  postComments(comm: Comments) {
+    console.log(comm);
+    const body = JSON.stringify(comm);
+    console.log(body);
     console.log('Post');
-    return this.http.post(this.appUrl, body,
-      { headers: this.headers, withCredentials: true }).pipe(
-        map(resp => {
-          const comment: Comments = resp as Comments;
-          if (comment) {
-            this.currentComments = comment.comment;
-            console.log(this.comment);
-          }
-          return comment;
-        }));
+    const url = this.appUrl + '/' + this.buildId;
+    console.log(url);
+    return this.http.post(url, body,
+      { headers: this.headers, withCredentials: true });
   }
 
   getComments(): Observable<Comment> {

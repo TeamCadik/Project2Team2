@@ -1,12 +1,12 @@
 <div class="container">
   <div id="buildComments" class="border border-dark rounded mt-5" style="width: 321px">
     <p class="ml-2">Comments:</p>
-    <textarea name="showText" class="ml-2" id="commentText" cols="40" rows="10" readonly [(ngModel)]="txtAreaVal"></textarea>
+    <textarea name="showText" class="ml-2" id="commentText" cols="40" rows="10" readonly [(ngModel)]="comment.commentStr"></textarea>
     <div class="comIn">
       <input type="text" id="textIn" class="ml-2 border border-info" [(ngModel)]="enterComments" (keyup.enter)="onClickAddComment()">
       <button class="ml-4 btn-info rounded" (click)="onClickAddComment()">Post Comment</button>
       <button class="btn-info rounded mt-1 ml-2 mb-2" (click)="deleteComments()">Delete Comments</button>
-      <button class="btn-info rounded ml-4">Save Comments</button>
+      <button class="btn-info rounded ml-4" (click) = "onClickGetComments()">Get Comments</button>
     </div>
   </div>
 </div>

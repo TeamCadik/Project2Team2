@@ -39,8 +39,9 @@ public class CommentHibernate implements CommentDAO{
 	@Override
 	public Set<Comment> getAllCommentsByBuild(int buildId) {
 		Session s = hu.getSession();
-		String query = "FROM comment where buildId=:buildId";
+		String query = "FROM Comments where buildId = :id";
 		Query<Comment> q =  s.createQuery(query, Comment.class);
+		q.setParameter("buildId", buildId);
 		List<Comment> commentList = q.getResultList();
 		Set<Comment> commentSet = new HashSet<Comment>();
 		commentSet.addAll(commentList);

@@ -11,22 +11,31 @@ import { Comments } from '../../../shared/comment';
 })
 export class BuildCommentsComponent implements OnInit {
   txtAreaVal = '';
-  comment: Comments;
+  @Input() comment: Comments = new Comments();
   enterComments = '';
+  buildId = 1;
 
   onClickAddComment() {
     if (this.enterComments !== '') {
-      this.txtAreaVal += this.enterComments + '\n';
-      this.commService.currentComments += this.enterComments + '\n';
-      console.log(this.commService.currentComments);
-      this.commService.getComments();
-      this.commService.postComments();
+      this.comment.commentStr += this.enterComments + '\n';
+      // this.commService.currentComments += this.enterComments + '\n';
+      // this.commService.comment.comment = this.txtAreaVal;
+      this.comment.buildId = this.buildId;
+      console.log(this.comment.commentStr);
+      this.commService.postComments(this.comment).subscribe(
+        (Response) => console.log(Response),
+        (error) => console.error(error)
+      );
       this.enterComments = '';
     }
   }
 
   deleteComments() {
-    this.txtAreaVal = '';
+    this.comment.commentStr = '';
+  }
+
+  onClickGetComments() {
+
   }
 
   constructor(private commService: CommentsService) { }

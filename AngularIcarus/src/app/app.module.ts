@@ -97,7 +97,7 @@ const routes=[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [CommentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
