@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BuildComponent } from './build/build/build.component';
@@ -54,14 +55,10 @@ const routes=[
     component: CreateUserProfileComponent
   },
   {
-    path: 'build/select',
-    component: SelectBuildComponent
-  },
-  {
     path: 'view-items',
     component: ItemsComponent
   }
-  ]
+];
 
 @NgModule({
   declarations: [
@@ -88,7 +85,6 @@ const routes=[
     SetCenterColComponent,
     SetsComponent,
     SetDropdownComponent
-
   ],
   imports: [
     HttpClientModule,
@@ -97,7 +93,8 @@ const routes=[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [CommentsService],
+  providers: [CommentsService,
+              UserProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
