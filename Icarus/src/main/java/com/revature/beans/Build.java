@@ -54,10 +54,10 @@ public class Build {
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "armourId")
-	Set<Armour> armours = new HashSet<Armour>();
+	private Set<Armour> armours = new HashSet<Armour>();
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "weaponId")
 	@LazyCollection(LazyCollectionOption.FALSE)
-	Set<Weapon> weapons = new HashSet<Weapon>();
+	private Set<Weapon> weapons = new HashSet<Weapon>();
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "buildId")
 	private Set<Comment> comments;
 
