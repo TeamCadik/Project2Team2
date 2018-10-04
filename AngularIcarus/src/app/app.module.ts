@@ -93,7 +93,8 @@ const routes=[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [UserProfileComponent],
+  providers: [CommentsService,
+              UserProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

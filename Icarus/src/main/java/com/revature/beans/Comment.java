@@ -8,11 +8,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="Comments")
+@Table(name ="comments")
 public class Comment {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="comment_seq")
-	@SequenceGenerator(name="comment_seq", sequenceName="comment_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="comments")
+	@SequenceGenerator(name="comments", sequenceName="comment_seq", allocationSize=1)
 	private Integer commentId;
 	private Integer buildId;
 	private String commentStr;
