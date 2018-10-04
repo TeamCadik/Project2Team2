@@ -55,14 +55,10 @@ const routes=[
     component: CreateUserProfileComponent
   },
   {
-    path: 'build/select',
-    component: SelectBuildComponent
-  },
-  {
     path: 'view-items',
     component: ItemsComponent
   }
-  ]
+];
 
 @NgModule({
   declarations: [
@@ -97,7 +93,7 @@ const routes=[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [UserProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

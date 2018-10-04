@@ -3,6 +3,7 @@ import { UserProfileService } from '../shared/user-profile.service';
 import { Character } from '../shared/user-profile';
 import { Location } from '@angular/common';
 import { UserService } from '../../shared/user/user.service';
+import { UserProfileComponent } from './../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-create-user-profile',
@@ -13,17 +14,19 @@ export class CreateUserProfileComponent implements OnInit {
   @Input() character: Character;
   @Input() characters: Character[];
   @Output() submitted = new EventEmitter<boolean>();
+  img = 'https://static.bandainamcoent.eu/high/dark-souls/dark-souls-hd/00-page-setup/ds-hd_game_thumb_408x314.jpg';
 
   constructor(
     // private route: ActivatedRoute,
     private userProfileService: UserProfileService,
     private location: Location,
-    private userService: UserService
+    private userService: UserService,
+    private userProfile: UserProfileComponent
   ) {}
 
   ngOnInit(): void {
     if (!this.character) {
-      this.character = new Character(null, this.getUserId(), '', 1, 1, 2, 3, 1, 2, 3);
+      this.character = new Character(null, this.getUserId(), '', 1, 1, 2, 3, 1, 2, 3, this.img);
     }
   }
 
