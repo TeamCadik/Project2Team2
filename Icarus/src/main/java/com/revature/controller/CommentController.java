@@ -21,9 +21,9 @@ public class CommentController {
 	@Autowired
 	private CommentDAO cd;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public Integer getComm(Comment commsid) {
-		return cd.addComment(commsid);
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public Set<Comment> getComm(@PathVariable("id") int id) {
+		return cd.getAllCommentsByBuild(id);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.POST)

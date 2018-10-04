@@ -17,7 +17,7 @@ export class CommentsService {
 
   constructor(private urlSource: UrlService, private http: HttpClient) { }
 
-  postComments(comm: Comments) {
+  postComments(comm: Comments): Observable<Comments[]> {
     console.log(comm);
     const body = JSON.stringify(comm);
     console.log(body);
@@ -25,13 +25,15 @@ export class CommentsService {
     const url = this.appUrl + '/' + this.buildId;
     console.log(url);
     return this.http.post(url, body,
-      { headers: this.headers, withCredentials: true });
+      { headers: this.headers, withCredentials: true })
+      .pipe(map( Response => Response as Comments[]));
   }
 
-  getComments(): Observable<Comment> {
-    console.log(this.currentComments);
-    return this.http.get(this.appUrl, {withCredentials: true}).pipe(
-      map(resp => resp as Comment)
-    );
+  getComments(id: number): Observable<Comments[]> {
+    const url = this.appUrl + '/' + id;
+    console.log(url);
+    return this.http.get(url,
+      { headers: this.headers, withCredentials: true })
+      .pipe(map( Response => Response as Comments[]));
   }
 }

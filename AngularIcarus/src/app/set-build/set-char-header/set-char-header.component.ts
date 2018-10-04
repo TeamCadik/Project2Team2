@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from '../../profile/shared/user-profile.service';
+import { Character } from '../../profile/shared/user-profile';
 
 @Component({
   selector: 'app-set-char-header',
@@ -16,25 +17,23 @@ export class SetCharHeaderComponent implements OnInit {
 
   inputLvl: number = null;
 
-
   constructor(private char: UserProfileService) { }
 
   ngOnInit() {
-
   }
 
-  onClickUpdateName() {
-    if (this.inputName !== '') {
-      this.charName = this.inputName;
-      this.inputName = '';
-    }
-  }
+  // onClickUpdateName() {
+  //   if (this.inputName !== '') {
+  //     this.charName = this.inputName;
+  //     this.inputName = '';
+  //   }
+  // }
 
-  onClickUpdateLevel() {
-    if (this.charLvl !== null) {
-      this.charLvl = this.inputLvl;
-      console.log(this.charLvl);
-      this.inputLvl = null;
-     }
-   }
+  // onClickUpdateLevel() {
+  //   if (this.charLvl !== null) {
+  //     this.charLvl = this.inputLvl;
+  //     console.log(this.charLvl);
+  //     this.inputLvl = null;
+  //    }
+  //  }
 }

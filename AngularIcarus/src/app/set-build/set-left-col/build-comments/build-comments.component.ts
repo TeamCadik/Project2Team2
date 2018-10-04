@@ -12,8 +12,15 @@ import { Comments } from '../../../shared/comment';
 export class BuildCommentsComponent implements OnInit {
   txtAreaVal = '';
   @Input() comment: Comments = new Comments();
+
+  commArray: Comments[];
   enterComments = '';
   buildId = 1;
+
+  ngOnInit() {
+    this.commService.getComments(this.buildId).subscribe(comms => this.commArray = comms);
+    // console.log(this.commArray);
+  }
 
   onClickAddComment() {
     if (this.enterComments !== '') {
@@ -22,10 +29,9 @@ export class BuildCommentsComponent implements OnInit {
       // this.commService.comment.comment = this.txtAreaVal;
       this.comment.buildId = this.buildId;
       console.log(this.comment.commentStr);
-      this.commService.postComments(this.comment).subscribe(
-        (Response) => console.log(Response),
-        (error) => console.error(error)
-      );
+      this.commService.postComments(this.comment).subscribe(comms => this.commArray = comms);
+      // console.log(this.commArray);
+      this.constString(this.commArray);
       this.enterComments = '';
     }
   }
@@ -35,12 +41,24 @@ export class BuildCommentsComponent implements OnInit {
   }
 
   onClickGetComments() {
-
+    this.commService.getComments(this.buildId).subscribe(comms => this.commArray = comms);
+    console.log(this.commArray);
+    this.constString(this.commArray);
   }
 
+  constString(commsArr: Comments[]) {
+    console.log(commsArr);
+    if (commsArr !== undefined) {
+      for (const i of commsArr) {
+        if (i.commentStr == null) {
+          this.comment.commentStr += '';
+        }
+        this.comment.commentStr += i.commentStr;
+      }
+    }
+  }
   constructor(private commService: CommentsService) { }
 
-  ngOnInit() {
-  }
+
 
 }
