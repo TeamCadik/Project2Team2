@@ -27,6 +27,7 @@ public class Character {
 	private Integer hp;
 	private Integer defense;
 	private Integer attack;
+	private String charImg;
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="buildId")
 	private Set<Build> builds;
 	private String charImg;
@@ -34,23 +35,7 @@ public class Character {
 	public Character() {
 		super();
 	}
-
-	public String getCharImg() {
-		return charImg;
-	}
-
-	public void setCharImg(String charImg) {
-		this.charImg = charImg;
-	}
-
-	public Set<Build> getBuilds() {
-		return builds;
-	}
-
-	public void setBuilds(Set<Build> builds) {
-		this.builds = builds;
-	}
-
+  
 	public Integer getCharacterId() {
 		return characterId;
 	}
@@ -129,6 +114,22 @@ public class Character {
 
 	public void setAttack(Integer attack) {
 		this.attack = attack;
+	}
+
+	public String getCharImg() {
+		return charImg;
+	}
+
+	public void setCharImg(String charImg) {
+		this.charImg = charImg;
+	}
+
+	public Set<Build> getBuilds() {
+		return builds;
+	}
+
+	public void setBuilds(Set<Build> builds) {
+		this.builds = builds;
 	}
 
 	@Override
@@ -227,6 +228,6 @@ public class Character {
 		return "Character [characterId=" + characterId + ", userId=" + userId + ", characterName=" + characterName
 				+ ", characterlevel=" + characterlevel + ", strength=" + strength + ", intelligence=" + intelligence
 				+ ", dexterity=" + dexterity + ", hp=" + hp + ", defense=" + defense + ", attack=" + attack
-				+ ", builds=" + builds + ", charImg=" + charImg + "]";
+				+ ", charImg=" + charImg + ", builds=" + builds + "]";
 	}
 }
