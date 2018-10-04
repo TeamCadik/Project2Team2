@@ -65,9 +65,9 @@
         <div class="card-body">
           <h5 class="card-title text-center">Weapons</h5>
           <div class="container">
-            Search: <input [(ngModel)]="searchWeapon" text="text" placeholder="Weapon">
+            Search: <input [(ngModel)]="searchWeapon" text="text" placeholder="Weapon" value="">
           </div>
-          <div class="list-group mt-2" id="myList" role="tablist">
+          <div class="list-group mt-2 " id="myList" role="tablist">
             <app-weapon *ngFor="let w of weapons | weaponFilterPipe: searchWeapon" [openWeapon]="w" (click)="displayWeapon()"></app-weapon>
           </div>
         </div>
@@ -75,8 +75,8 @@
     </div>
     <div class="col-sm-7">
       <div class="card">
-        <div class="card-body" *ngIf ="selectedWeapon">
-          <h5 class="card-title text-center" *ngIf ="selectedWeapon">{{selectedWeapon.weaponName}}</h5>
+        <div class="card-body" *ngIf="selectedWeapon">
+          <h5 class="card-title text-center">{{selectedWeapon.weaponName}}</h5>
           <form>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Armour Id:</label>

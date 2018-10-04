@@ -6,7 +6,7 @@ import { Armour } from './build/shared/armour';
 })
 export class ArmourFilterPipePipe implements PipeTransform {
 
-  transform(armours: Armour[], searchText: string): Armour[] {
+  transform(armours: Armour[], searchText=""): Armour[] {
     if(!armours){
       return[];
     }

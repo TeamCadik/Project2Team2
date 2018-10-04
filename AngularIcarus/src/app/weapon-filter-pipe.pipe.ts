@@ -5,8 +5,8 @@ import { Weapon } from './build/shared/weapon';
   name: 'weaponFilterPipe'
 })
 export class WeaponFilterPipePipe implements PipeTransform {
-
-  transform(weapons: Weapon[], searchText: string): Weapon[] {
+  
+  transform(weapons: Weapon[], searchText = ""): Weapon[] {
     if (!weapons) {
       return [];
     }
