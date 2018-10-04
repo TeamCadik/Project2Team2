@@ -1,0 +1,19 @@
+<h2>All Builds:</h2>
+<div class="container">
+    <table class="table">
+        <div>
+            <thead>
+                <tr>
+                    <th scope="col">Build #</th>
+                    <th scope="col">Weapons</th>
+                    <th scope="col">Armour</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">View Build</th>
+                </tr>
+            </thead>
+        </div>
+        <tbody>
+            <app-build *ngFor="let b of builds" [openBuild]="b"></app-build>
+        </tbody>
+    </table>
+</div>

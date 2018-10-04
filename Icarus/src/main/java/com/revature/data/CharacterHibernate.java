@@ -8,27 +8,30 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Character;
 import com.revature.utils.HibernateUtil;
 
+@Component
 public class CharacterHibernate implements CharacterDAO{
-	private HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private HibernateUtil hu;
 
 	@Override
-	public int addUser(Character character) {
+	public Character addCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
-		Integer id = 0;
 		try {
-			id = (Integer) s.save(character);
+			s.save(character);
 			t.commit();
 		} catch(HibernateException e) {
 			t.rollback();
 		} finally {
 			s.close();
 		}
-		return id;
+		return character;
 	}
 
 	@Override
@@ -42,19 +45,19 @@ public class CharacterHibernate implements CharacterDAO{
 	@Override
 	public Set<Character> getAllCharacters() {
 		Session s = hu.getSession();
-		String query = "FROM Chracter";
-		Query<Character> q = s.createQuery(query, Character.class);
-		List<Character> charList = q.getResultList();
+		List<Character> charList = s.createQuery("From com.revature.beans.Character", Character.class).list();
 		Set<Character> charSet = new HashSet<Character>();
 		charSet.addAll(charList);
 		return charSet;
 	}
 	
 	@Override
-	public Set<Character> getAllCharactersByUser(int userId) {
+	public Set<Character> getAllCharactersByUser(int id) {
+		System.out.println("USERID in DAO: " + id);
 		Session s = hu.getSession();
-		String query = "FROM Character where userId=:userId";
+		String query = "FROM Character where userId = :id";
 		Query<Character> q = s.createQuery(query, Character.class);
+		q.setParameter("id", id);
 		List<Character> charList = q.getResultList();
 		Set<Character> charSet = new HashSet<Character>();
 		charSet.addAll(charList);
@@ -62,7 +65,7 @@ public class CharacterHibernate implements CharacterDAO{
 	}
 
 	@Override
-	public void deleteUser(Character character) {
+	public void deleteCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
 		s.update(character);
@@ -71,7 +74,7 @@ public class CharacterHibernate implements CharacterDAO{
 	}
 
 	@Override
-	public void updateUser(Character character) {
+	public void updateCharacter(Character character) {
 		Session s = hu.getSession();
 		Transaction t = s.beginTransaction();
 		s.delete(character);

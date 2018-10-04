@@ -1,0 +1,8 @@
+<h2>Your Builds</h2>
+<ul class="builds">
+  <li *ngFor="let build of builds">
+    <a routerLink="/build/{{build.buildId}}">
+      <span class="badge">{{build.buildId}}</span> {{build.description}}
+    </a>
+  </li>
+</ul>
