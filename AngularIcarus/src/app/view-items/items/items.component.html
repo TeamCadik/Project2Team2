@@ -4,51 +4,54 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title text-center">Armour</h5>
-          <div class="list-group" id="myList" role="tablist">
-            <app-armour *ngFor="let a of armours" [openArmour]="a" (click)=displayArmour()></app-armour>
+          <div class="container">
+            Search: <input [(ngModel)]="searchArmour" text="text" placeholder="Armour">
+          </div>
+          <div class="list-group mt-2" id="myList" role="tablist">
+            <app-armour *ngFor="let a of armours | armourFilterPipe: searchArmour" [openArmour]="a" (click)=displayArmour()></app-armour>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-7">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" *ngIf="selectedArmour">
           <h5 class="card-title text-center">{{selectedArmour.armourName}}</h5>
           <form>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Armour Id:</label>
               <div class="col-sm-10">
-                <span id="location">{{selectedArmour.armourId}}</span>
+                <span>{{selectedArmour.armourId}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Item Slot:</label>
               <div class="col-sm-10">
-                <span id="format">{{selectedArmour.armourType}}</span>
+                <span>{{selectedArmour.armourType}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Defense Modifier:</label>
               <div class="col-sm-10">
-                <span id="gradeToPass">{{selectedArmour.defenseModifier}}</span>
+                <span>{{selectedArmour.defenseModifier}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Stat:</label>
               <div class="col-sm-10">
-                <span id="percent">{{selectedArmour.stat}}</span>
+                <span>{{selectedArmour.stat}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Stat Modifier:</label>
               <div class="col-sm-10">
-                <span id="percent">{{selectedArmour.statModifier}}</span>
+                <span>{{selectedArmour.statModifier}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Description:</label>
               <div class="col-sm-10">
-                <span id="percent">{{selectedArmour.description}}</span>
+                <span>{{selectedArmour.description}}</span>
               </div>
             </div>
           </form>
@@ -61,45 +64,48 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title text-center">Weapons</h5>
-          <div class="list-group" id="myList" role="tablist">
-            <app-weapon *ngFor="let w of weapons" [openWeapon]="w" (click)="displayWeapon()"></app-weapon>
+          <div class="container">
+            Search: <input [(ngModel)]="searchWeapon" text="text" placeholder="Weapon">
+          </div>
+          <div class="list-group mt-2" id="myList" role="tablist">
+            <app-weapon *ngFor="let w of weapons | weaponFilterPipe: searchWeapon" [openWeapon]="w" (click)="displayWeapon()"></app-weapon>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-7">
       <div class="card">
-        <div class="card-body">
-          <h5 class="card-title text-center">{{selectedWeapon.weaponName}}</h5>
+        <div class="card-body" *ngIf ="selectedWeapon">
+          <h5 class="card-title text-center" *ngIf ="selectedWeapon">{{selectedWeapon.weaponName}}</h5>
           <form>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Armour Id:</label>
               <div class="col-sm-10">
-                <span id="location">{{selectedWeapon.weaponId}}</span>
+                <span>{{selectedWeapon.weaponId}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Weapon Type:</label>
               <div class="col-sm-10">
-                <span id="format">{{selectedWeapon.weaponType}}</span>
+                <span>{{selectedWeapon.weaponType}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Attack Modifier:</label>
               <div class="col-sm-10">
-                <span id="gradeToPass">{{selectedWeapon.attackModifier}}</span>
+                <span>{{selectedWeapon.attackModifier}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Defense Modifier:</label>
               <div class="col-sm-10">
-                <span id="percent">{{selectedWeapon.defenseModifier}}</span>
+                <span>{{selectedWeapon.defenseModifier}}</span>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2  col-form-label">Description:</label>
               <div class="col-sm-10">
-                <span id="percent">{{selectedWeapon.description}}</span>
+                <span>{{selectedWeapon.description}}</span>
               </div>
             </div>
           </form>

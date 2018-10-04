@@ -31,6 +31,8 @@ import { SetsComponent } from './set-build/set-center-col/sets/sets.component';
 import { SetDropdownComponent } from './set-build/set-center-col/set-dropdown/set-dropdown.component';
 import { CommentsService } from './shared/comments.service';
 import { StatService } from './shared/stats.service';
+import { ArmourFilterPipePipe } from './armour-filter-pipe.pipe';
+import { WeaponFilterPipePipe } from './weapon-filter-pipe.pipe';
 
 const routes=[
   {
@@ -84,7 +86,9 @@ const routes=[
     SetCharHeaderComponent,
     SetCenterColComponent,
     SetsComponent,
-    SetDropdownComponent
+    SetDropdownComponent,
+    ArmourFilterPipePipe,
+    WeaponFilterPipePipe
   ],
   imports: [
     HttpClientModule,
