@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from '../../profile/shared/user-profile.service';
 import { Character } from '../../profile/shared/user-profile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-set-char-header',
@@ -15,11 +16,27 @@ export class SetCharHeaderComponent implements OnInit {
 
   inputName = '';
 
+  character: Character = new Character(null, null, null, null, null, null, null, null, null, null, null);
+  href = '';
+
+  dummyText = '';
+
   inputLvl: number = null;
 
-  constructor(private char: UserProfileService) { }
+  constructor(private urlRouter: Router, private userProf: UserProfileService) { }
 
   ngOnInit() {
+    this.getCharIdFromUrl();
+  }
+
+  getCharIdFromUrl() {
+    this.href = this.urlRouter.url;
+    console.log(this.href);
+    this.dummyText = this.href.slice(11);
+    console.log(this.dummyText);
+    this.character.characterId = +this.dummyText;
+    console.log(this.character.characterId);
+    this.userProf.getCharacter(this.character.characterId).subscribe(curChar => this.character = curChar);
   }
 
   // onClickUpdateName() {
