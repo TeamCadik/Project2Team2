@@ -1,16 +1,15 @@
-import { StatService } from './../../shared/stats.service';
-import { Component, OnInit, Input } from '@angular/core';
-import { Stats } from '../../shared/stats';
+import { Component, OnInit } from '@angular/core';
+import { UserProfileService } from '../../profile/shared/user-profile.service';
 
 @Component({
   selector: 'app-set-char-header',
   templateUrl: './set-char-header.component.html',
   styleUrls: ['./set-char-header.component.css'],
-  providers: []
+  providers: [UserProfileService]
 })
 export class SetCharHeaderComponent implements OnInit {
-  charName = 'Iron Fighter';
-  charLvl = 100;
+  charName = '';
+  charLvl = 0;
   charILevel = '120';
 
   inputName = '';
@@ -18,7 +17,7 @@ export class SetCharHeaderComponent implements OnInit {
   inputLvl: number = null;
 
 
-  constructor() { }
+  constructor(private char: UserProfileService) { }
 
   ngOnInit() {
 
