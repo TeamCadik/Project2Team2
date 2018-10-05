@@ -1,3 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { ModdingService } from '../../modding.service'
+
 import { Router } from '@angular/router';
 import { StatService } from './../../../shared/stats.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,20 +17,27 @@ import { UserProfileService } from '../../../profile/shared/user-profile.service
 })
 export class SetStatsComponent implements OnInit {
   hitpoints = 5;
-  strength  = 5;
-  dexterity  = 5;
+  strength = 5;
+  dexterity = 5;
   intelligence = 5;
   defense = 5;
   attack = 5;
   character: Character = new Character(null, null, null, null, null, null, null, null, null, null, null);
+  public charMod: Character;
   href = '';
 
   dummyText = '';
 
-  constructor(private urlRouter: Router, private userProf: UserProfileService) {}
+  constructor(private urlRouter: Router, private userProf: UserProfileService,
+    private route: ActivatedRoute, private moddingService: ModdingService) { }
 
   ngOnInit() {
     this.getCharIdFromUrl();
+    this.charMod = this.moddingService.getCharMod();
+  }
+
+  getCharMod() {
+    this.charMod = this.moddingService.getCharMod();
   }
 
   getCharIdFromUrl() {
@@ -38,5 +49,4 @@ export class SetStatsComponent implements OnInit {
     console.log(this.character.characterId);
     this.userProf.getCharacter(this.character.characterId).subscribe(curChar => this.character = curChar);
   }
-
 }

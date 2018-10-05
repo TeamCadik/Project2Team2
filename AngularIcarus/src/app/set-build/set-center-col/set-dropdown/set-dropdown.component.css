@@ -1,0 +1,14 @@
+span.a {
+    float: left;
+    height: 200px;
+    border: 1px solid grey;
+}
+span.b {
+    float: right;
+    height: 200px;
+    border: 1px solid grey;
+}
+span.d {
+    align-self: top;
+    border: 1px solid grey;
+}

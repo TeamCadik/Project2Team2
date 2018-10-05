@@ -22,13 +22,16 @@ public class BuildHibernate implements BuildDAO{
 	@Override
 	public int addBuild(Build build) {
 		Session s = hu.getSession();
-		Transaction t = s.beginTransaction();
+		Transaction t = null;
 		Integer id = 0;
 		try {
+			System.out.println("build");
+			t = s.beginTransaction();
 			id = (Integer) s.save(build);
 			t.commit();
 		} catch(HibernateException e) {
 			t.rollback();
+			e.printStackTrace();
 		} finally {
 			s.close();
 		}
@@ -56,12 +59,14 @@ public class BuildHibernate implements BuildDAO{
 	@Override
 	public Set<Build> getAllBuildsByCharacter(int characterId) {
 		Session s = hu.getSession();
-		String query = "FROM Build where characterId=:characterId";
+		String query = "FROM Build where characterId=:cid";
 		Query<Build> q = s.createQuery(query, Build.class);
+		q.setParameter("cid",characterId);
 		List<Build> buildList = q.getResultList();
 		Set<Build> buildSet = new HashSet<Build>(buildList);
 		return buildSet;
 	}
+	
 
 	@Override
 	public void deleteBuild(Build build) {
