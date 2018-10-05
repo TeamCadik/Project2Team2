@@ -3,7 +3,7 @@
     <p class="ml-2">Comments:</p>
     <textarea name="showText" class="ml-2" id="commentText" cols="40" rows="10" readonly [value]="txtAreaVal"></textarea>
     <div class="comIn">
-      <input type="text" id="textIn" class="ml-2 border border-info" [(ngModel)]="comment.comment" (keyup.enter)="onClickAddComment()">
+      <!--<input type="text" id="textIn" class="ml-2 border border-info" [(ngModel)]="comment.comment" (keyup.enter)="onClickAddComment()">-->
       <button class="ml-4 btn-info rounded" (click)="onClickAddComment()">Post Comment</button>
       <button class="btn-info rounded mt-1 ml-2 mb-2" (click)="deleteComments()">Delete Comments</button>
       <button class="btn-info rounded ml-4">Save Comments</button>

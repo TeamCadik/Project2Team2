@@ -1,6 +1,12 @@
-import { StatService } from './../../shared/stats.service';
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { Component, OnInit, Input } from '@angular/core';
-import { Stats } from '../../shared/stats';
+import { Character } from './../../profile/shared/user-profile';
+
+import { UserProfileService }  from './../../profile/shared/user-profile.service';
+
 
 @Component({
   selector: 'app-set-char-header',
@@ -9,26 +15,35 @@ import { Stats } from '../../shared/stats';
   providers: []
 })
 export class SetCharHeaderComponent implements OnInit {
-  charName = 'Iron Fighter';
-  charLvl = 100;
-  charILevel = '120';
-
+  
+  @Input() character: Character;
+  
   inputName = '';
 
   inputLvl: number = null;
 
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private userProfileService: UserProfileService,
+    private location: Location) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getCharacter();
   }
 
+  getCharacter(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userProfileService.getCharacter(id)
+      .subscribe(character => this.character = character);
+  }
+/*
   onClickUpdateName() {
     if (this.inputName !== '') {
       this.charName = this.inputName;
       this.inputName = '';
     }
-  }
+  }*/
 
   // onClickUpdateLevel() {
   //   if (this.chrlevel.getChLvl !== null) {
