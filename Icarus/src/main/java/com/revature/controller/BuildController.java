@@ -30,7 +30,15 @@ public class BuildController {
 	public Build getBuild(@PathVariable("id") int id) {
 		return bs.getBuildById(id);
 	}
-	
+	@RequestMapping(value="character/{id}", method=RequestMethod.GET)
+	public Set<Build> getCharBuild(@PathVariable("id")int id) {
+		return bs.getCharBuild(id);
+	}
+
+	@RequestMapping(method = RequestMethod.PUT)
+	public void updateBuild(@RequestBody Build b) {
+		bs.updateBuild(b);
+	}
 	@RequestMapping(method=RequestMethod.POST)
 	public Set<Build> addBuild(@RequestBody Build b) {
 		bs.addBuild(b);
