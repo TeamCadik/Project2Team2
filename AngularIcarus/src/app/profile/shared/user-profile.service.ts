@@ -36,7 +36,7 @@ export class UserProfileService {
     const body = JSON.stringify(character);
     if(character.characterId) {
       console.log('Put');
-      const url = this.charactersUrl + '/' + character.characterId;
+      const url = this.charactersUrl+'/'+character.characterId;
       return this.http.put(url, body, {headers: this.headers, withCredentials: true}).pipe (
         map(resp => {
           const char: Character[] = resp as Character[];
@@ -61,12 +61,5 @@ export class UserProfileService {
           })
       );
     }
-  }
-
-  deleteCharacter(id: number): Observable<Object> {
-    const url = this.charactersUrl + '/' + id;
-    console.log(url);
-    return this.http.delete(url, { headers: this.headers, withCredentials: true}).pipe(
-      map(resp => resp));
   }
 }

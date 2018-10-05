@@ -10,8 +10,7 @@ export class Character {
     public dexterity: number,
     public hp: number,
     public defense: number,
-    public attack: number,
-    public charImg: string
+    public attack: number
   ) {}
   characterId: number;
   // userId: number;

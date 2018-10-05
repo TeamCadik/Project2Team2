@@ -18,8 +18,4 @@ export class ArmouryComponent implements OnInit {
   ngOnInit() {
     this.buildService.getBuilds().subscribe(builds => this.builds = builds);
   }
-
-  viewBuild(b:Build){
-    console.log(b);
-  }
 }

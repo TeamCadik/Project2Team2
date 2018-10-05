@@ -1,6 +1,5 @@
 export class Comments {
   commentId: number;
-  commentStr = '';
+  comment: string;
   buildId: number;
-  comments: string[];
 }

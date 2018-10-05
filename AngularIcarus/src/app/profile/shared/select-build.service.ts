@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SelectBuildService {
-  private buildsUrl = this.urlSource.getURL() + '/charater';
+  private buildsUrl = this.urlSource.getURL()+'/build';
 
   constructor(
     private http: HttpClient,
@@ -17,7 +17,7 @@ export class SelectBuildService {
   ) { }
 
   getBuild(id: number): Observable<Build> {
-    const url: string = this.buildsUrl + '/' + id;
+    const url: string = this.buildsUrl+'/'+id;
     return this.http.get(url, {withCredentials:true}).pipe(
       map(resp => resp as Build)
     );

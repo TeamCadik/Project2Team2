@@ -1,23 +1,8 @@
-<h2>Your Characters:</h2>
-<!-- <ul class="list-group">
-  <li href="#" class="list-group-item" *ngFor="let character of characters">
+<h2>Your Profile</h2>
+<ul class="characters">
+  <li *ngFor="let character of characters">
     <a routerLink="/character/{{character.characterId}}">
-      <li class="container-fluid">{{character.characterName}}</li>
+      <span class="badge">{{character.characterId}}</span> {{character.characterName}}
     </a>
-    <button class="btn btn-danger" (click)="deleteCharacter(character.characterId)">Delete</button>
   </li>
-</ul> -->
-
-<div class="characters card-deck">
-  <li class="col-sm-3" *ngFor="let character of characters">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{character.charImg}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="character-name">{{character.characterName}}</h5>
-          <p class="character-level">Level: {{character.characterlevel}}</p>
-          <button class="btn btn-success" routerLink="/character/{{character.characterId}}">Select</button>
-          <button class="btn btn-danger" (click)="deleteCharacter(character.characterId)">Delete</button>
-        </div>
-    </div>
-  </li>
-</div>
+</ul>

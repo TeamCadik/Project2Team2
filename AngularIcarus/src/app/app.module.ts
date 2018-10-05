@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BuildComponent } from './build/build/build.component';
@@ -31,8 +30,6 @@ import { SetsComponent } from './set-build/set-center-col/sets/sets.component';
 import { SetDropdownComponent } from './set-build/set-center-col/set-dropdown/set-dropdown.component';
 import { CommentsService } from './shared/comments.service';
 import { StatService } from './shared/stats.service';
-import { ArmourFilterPipePipe } from './armour-filter-pipe.pipe';
-import { WeaponFilterPipePipe } from './weapon-filter-pipe.pipe';
 
 const routes=[
   {
@@ -57,10 +54,14 @@ const routes=[
     component: CreateUserProfileComponent
   },
   {
+    path: 'build/select',
+    component: SelectBuildComponent
+  },
+  {
     path: 'view-items',
     component: ItemsComponent
   }
-];
+  ]
 
 @NgModule({
   declarations: [
@@ -86,9 +87,8 @@ const routes=[
     SetCharHeaderComponent,
     SetCenterColComponent,
     SetsComponent,
-    SetDropdownComponent,
-    ArmourFilterPipePipe,
-    WeaponFilterPipePipe
+    SetDropdownComponent
+
   ],
   imports: [
     HttpClientModule,
@@ -97,8 +97,7 @@ const routes=[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [CommentsService,
-              UserProfileComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

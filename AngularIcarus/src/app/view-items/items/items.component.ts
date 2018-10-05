@@ -3,7 +3,6 @@ import { Weapon } from '../../build/shared/weapon';
 import { Armour } from '../../build/shared/armour';
 import { ArmourService } from '../shared/armour.service';
 import { WeaponService } from '../shared/weapon.service';
-import { UserService } from '../../shared/user/user.service';
 
 @Component({
   selector: 'app-items',
@@ -17,8 +16,7 @@ export class ItemsComponent implements OnInit {
   public selectedWeapon:Weapon;
 
   constructor(private armourService: ArmourService,
-              private weaponService: WeaponService,
-              private userService: UserService) { }
+              private weaponService: WeaponService) { }
 
   ngOnInit() {
     this.armourService.getAllArmour().subscribe(armours=>this.armours=armours);
@@ -35,13 +33,5 @@ export class ItemsComponent implements OnInit {
   displayArmour(){
     this.selectedArmour = this.armourService.getSelectedArmour();
     console.log(this.selectedArmour);
-  }
-
-  isDeveloper(): number{
-    if(this.userService.getUser())
-    {
-      return this.userService.getUser().isDeveloper;
-    }
-    return 0;
   }
 }

@@ -37,13 +37,11 @@ export class ArmourService {
   updateArmour(armour: Armour): Observable<Armour> {
     const body = JSON.stringify(armour);
     if(!armour.armourId) {
-      return this.http
-      .post(this.appUrl, body, {headers: this.headers, withCredentials: true})
-      .pipe(map(resp=>resp as Armour));
+      return this.http.post(this.appUrl, body, {headers: this.headers, withCredentials: true}).pipe(
+        map(resp=>resp as Armour));
     }
     const url = this.appUrl+'/'+armour.armourId;
-    return this.http
-    .put(url, body, {headers: this.headers, withCredentials:true})
+    return this.http.put(url, body, {headers: this.headers, withCredentials:true})
     .pipe(map(resp=>resp as Armour));
   }
 

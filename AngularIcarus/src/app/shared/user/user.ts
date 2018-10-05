@@ -5,6 +5,5 @@ export class User {
     password: string;
     firstname: string;
     lastname: string;
-    isDeveloper: number;
     characters: Character[];
 }
