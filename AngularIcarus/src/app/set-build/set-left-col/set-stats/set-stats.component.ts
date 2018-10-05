@@ -1,40 +1,51 @@
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
-import { Component, OnInit, Input } from '@angular/core';
-import { Character } from './../../../profile/shared/user-profile';
 import { ModdingService } from '../../modding.service'
 
-import { UserProfileService }  from './../../../profile/shared/user-profile.service';
-
+import { Router } from '@angular/router';
+import { StatService } from './../../../shared/stats.service';
+import { Component, OnInit } from '@angular/core';
+import { Stats } from '../../../shared/stats';
+import { Character } from '../../../profile/shared/user-profile';
+import { UserProfileService } from '../../../profile/shared/user-profile.service';
 
 @Component({
   selector: 'app-set-stats',
   templateUrl: './set-stats.component.html',
   styleUrls: ['./set-stats.component.css'],
-  providers: []
+  providers: [UserProfileService]
 })
 export class SetStatsComponent implements OnInit {
-  
-  @Input() character: Character;
+  hitpoints = 5;
+  strength  = 5;
+  dexterity  = 5;
+  intelligence = 5;
+  defense = 5;
+  attack = 5;
+  character: Character = new Character(null, null, null, null, null, null, null, null, null, null, null);
   public charMod: Character;
-  constructor(
-    private route: ActivatedRoute,
-    private userProfileService: UserProfileService,
-    private moddingService: ModdingService) {}
+  href = '';
+
+  dummyText = '';
+
+  constructor(private urlRouter: Router, private userProf: UserProfileService, 
+              private route: ActivatedRoute, private moddingService: ModdingService) {}
+
+  ngOnInit() {
+    this.getCharIdFromUrl();
+    this.charMod = this.moddingService.getCharMod();
+  }
+      
+  getCharMod(){
+      this.charMod = this.moddingService.getCharMod();
    
-    ngOnInit(): void {
-      this.getCharacter();
-      this.charMod = this.moddingService.getCharMod();
-    }
-  
-    getCharMod(){
-      this.charMod = this.moddingService.getCharMod();
-    }
-    getCharacter(): void {
-      const id = +this.route.snapshot.paramMap.get('id');
-      console.log(id);
-      this.userProfileService.getCharacter(id)
-        .subscribe(character => this.character = character);
-    }
+  getCharIdFromUrl() {
+    this.href = this.urlRouter.url;
+    console.log(this.href);
+    this.dummyText = this.href.slice(11);
+    console.log(this.dummyText);
+    this.character.characterId = +this.dummyText;
+    console.log(this.character.characterId);
+    this.userProf.getCharacter(this.character.characterId).subscribe(curChar => this.character = curChar);
+  }
 }
