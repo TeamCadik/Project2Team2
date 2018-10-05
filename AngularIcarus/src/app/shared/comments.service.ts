@@ -4,6 +4,7 @@ import { UrlService } from './url.service';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Character } from '../profile/shared/user-profile';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,13 @@ export class CommentsService {
   comment: Comments;
   currentComments = '';
 
+  character: Character = new Character(null, null, null, null, null, null, null, null, null, null, null);
+
   constructor(private urlSource: UrlService, private http: HttpClient) { }
 
   postComments(comm: Comments): Observable<Comments[]> {
+    this.buildId = this.character.characterId;
+    console.log(this.buildId);
     console.log(comm);
     const body = JSON.stringify(comm);
     console.log(body);

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { Character } from './../../../profile/shared/user-profile';
 import { CommentsService } from './../../../shared/comments.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Comments } from '../../../shared/comment';
@@ -16,8 +18,13 @@ export class BuildCommentsComponent implements OnInit {
   commArray: Comments[];
   enterComments = '';
   buildId = 1;
+  href = '';
+
+  dummyText = '';
 
   ngOnInit() {
+    this.getCharIdFromUrl();
+
     this.commService.getComments(this.buildId).subscribe(comms => this.commArray = comms);
     // console.log(this.commArray);
   }
@@ -57,8 +64,17 @@ export class BuildCommentsComponent implements OnInit {
       }
     }
   }
-  constructor(private commService: CommentsService) { }
+  constructor(private commService: CommentsService, private urlRouter: Router) { }
 
-
+  getCharIdFromUrl() {
+    this.href = this.urlRouter.url;
+    console.log(this.href);
+    this.dummyText = this.href.slice(11);
+    console.log(this.dummyText);
+    this.commService.character.characterId = +this.dummyText;
+    console.log(this.commService.character.characterId);
+    this.buildId = this.commService.character.characterId;
+    console.log(this.buildId);
+  }
 
 }
