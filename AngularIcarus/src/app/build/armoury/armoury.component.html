@@ -14,16 +14,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let b of builds" (click)="viewBuild(b)">
+            <tr *ngFor="let b of builds">
                 <td>{{b.buildId}}</td>
-                <td>{{b.mainHand.weaponName}}</td>
-                <td>{{b.offHand.weaponName}}</td>
-                <td>{{b.head.armourName}}</td>
-                <td>{{b.torso.armourName}}</td>
-                <td>{{b.legs.armourName}}</td>
-                <td>{{b.gloves.armourName}}</td>
+                <td *ngIf="b.mainHand; else display">{{b.mainHand.weaponName}}</td>
+                <td *ngIf="b.offHand; else display">{{b.offHand.weaponName}}</td>
+                <td *ngIf="b.head; else display">{{b.head.armourName}}</td>
+                <td *ngIf="b.torso; else display">{{b.torso.armourName}}</td>
+                <td *ngIf="b.legs; else display">{{b.legs.armourName}}</td>
+                <td *ngIf="b.gloves; else display">{{b.gloves.armourName}}</td>
                 <td>{{b.description}}</td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<ng-template #display>
+    <td>--</td>
+</ng-template>
