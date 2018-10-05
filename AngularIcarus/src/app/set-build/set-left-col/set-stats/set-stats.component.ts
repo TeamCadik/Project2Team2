@@ -17,8 +17,8 @@ import { UserProfileService } from '../../../profile/shared/user-profile.service
 })
 export class SetStatsComponent implements OnInit {
   hitpoints = 5;
-  strength  = 5;
-  dexterity  = 5;
+  strength = 5;
+  dexterity = 5;
   intelligence = 5;
   defense = 5;
   attack = 5;
@@ -28,17 +28,18 @@ export class SetStatsComponent implements OnInit {
 
   dummyText = '';
 
-  constructor(private urlRouter: Router, private userProf: UserProfileService, 
-              private route: ActivatedRoute, private moddingService: ModdingService) {}
+  constructor(private urlRouter: Router, private userProf: UserProfileService,
+    private route: ActivatedRoute, private moddingService: ModdingService) { }
 
   ngOnInit() {
     this.getCharIdFromUrl();
     this.charMod = this.moddingService.getCharMod();
   }
-      
-  getCharMod(){
-      this.charMod = this.moddingService.getCharMod();
-   
+
+  getCharMod() {
+    this.charMod = this.moddingService.getCharMod();
+  }
+
   getCharIdFromUrl() {
     this.href = this.urlRouter.url;
     console.log(this.href);
