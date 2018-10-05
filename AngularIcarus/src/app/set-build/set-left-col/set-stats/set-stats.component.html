@@ -2,22 +2,22 @@
   <div class="row border border-dark">
     <ul class="list-group">
       <li class="list-group-item">
-        HP: <span class="ml-5 float-right">{{ hitPoints.serhitPoints }}</span>
+        HP: <span class="ml-5 float-right">{{ hitpoints * character.characterlevel }}</span>
       </li>
       <li class="list-group-item">
-        Strength: <span class="ml-5 float-right">{{ strength.serstrength }}</span>
+        Strength: <span class="ml-5 float-right">{{ strength * character.characterlevel }}</span>
       </li>
       <li class="list-group-item">
-        Dexterity: <span class="ml-5 float-right">{{ dexterity.serdexterity }}</span>
+        Dexterity: <span class="ml-5 float-right">{{ dexterity * character.characterlevel }}</span>
       </li>
       <li class="list-group-item">
-        Intelligence: <span class="ml-5 float-right">{{ intel.serintel }}</span>
+        Intelligence: <span class="ml-5 float-right">{{ intelligence * character.characterlevel }}</span>
       </li>
       <li class="list-group-item">
-        Defense: <span class="ml-5 float-right">{{ defense.serdefense }}</span>
+        Defense: <span class="ml-5 float-right">{{ defense * character.characterlevel }}</span>
       </li>
       <li class="list-group-item">
-        Attack: <span class="ml-5 float-right">{{ attack.serattack }}</span>
+        Attack: <span class="ml-5 float-right">{{ attack * character.characterlevel }}</span>
       </li>
     </ul>
   </div>
