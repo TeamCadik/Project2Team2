@@ -1,33 +1,45 @@
 <div class="container">
-  <h1>Create a New Character</h1>
-  <form #createCharacter="ngForm">
-    <div class="form-group">
-      <label for="characterName">Name</label>
-      <input type="text" class="form-control" id="characterName" required
-        [(ngModel)]="character.characterName" name="characterName"
-        #name = "ngModel">
-      <div [hidden]="name.valid || name.pristine"
-        class="alert alert-danger">
-        Name is required
-      </div>
-    </div>
+  <div class="float-left">
+      <h1>Create a New Character</h1>
+      <form #createCharacter="ngForm">
+        <div class="form-group">
+          <label for="characterName">Name</label>
+          <input type="text" class="form-control" id="characterName" required
+            [(ngModel)]="character.characterName" name="characterName"
+            #name = "ngModel">
+          <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+            Name is required
+          </div>
+        </div>
 
-    <div class="form-group">
-      <label for="characterlevel">Level</label>
-      <input type="number" class="form-control" id="characterlevel"
-        [(ngModel)]="character.characterlevel" name="characterlevel">
-    </div>
+        <div class="form-group">
+          <label for="characterlevel">Level</label>
+          <input type="number" class="form-control" id="characterlevel"
+            [(ngModel)]="character.characterlevel" name="characterlevel">
+        </div>
 
-    <div class="form-group">
-      <label for="charImg">Character Image</label>
-      <input type="text" class="form-control" id="charImg"
-        [(ngModel)]="character.charImg" name="charImg">
-    </div>
+        <div class="form-group">
+          <label for="charImg">Character Image</label>
+          <input type="text" class="form-control" id="charImg"
+            [(ngModel)]="character.charImg" name="charImg">
+        </div>
 
-    <a routerLink="/profile"><button type="submit" class="btn btn-success"
-    [disabled]="!createCharacter.form.valid" (click)="updateCharacter()">Submit</button>
-    </a>
-    <button (click)="goBack()" type="submit" class="btn btn-danger" id="backbtn">Cancel</button>
+        <a routerLink="/profile"><button type="submit" class="btn btn-success"
+        [disabled]="!createCharacter.form.valid" (click)="updateCharacter()">Submit</button>
+        </a>
+        <button (click)="goBack()" type="submit" class="btn btn-danger" id="backbtn">Cancel</button>
 
-  </form>
+      </form>
+  </div>
+  <div class="float-right mt-5 mr-5">
+      <ul class="list-group mt-4">
+        <li class="list-group-item">Hit Points: <span class="float-right ml-3" [(ngModel)] = "character.characterlevel">{{ hitPoints * character.characterlevel }}</span></li>
+        <li class="list-group-item">Strength: <span class="float-right ml-3" [(ngModel)] = "character.characterlevel">{{ strength * character.characterlevel }}</span></li>
+        <li class="list-group-item">Dexterity: <span class="float-right ml-3" [(ngModel)] = "character.characterlevel">{{ dexterity * character.characterlevel }}</span></li>
+        <li class="list-group-item">Intelligence: <span class="float-right ml-3" [(ngModel)] = "character.characterlevel">{{ intel * character.characterlevel }}</span></li>
+        <li class="list-group-item">Defense: <span class="float-right ml-3" [(ngModel)] = "character.characterlevel">{{ defense * character.characterlevel }}</span></li>
+        <li class="list-group-item">Attack: <span class="float-right ml-3" [(ngModel)] = "character.characterlevel">{{ attack * character.characterlevel }}</span></li>
+      </ul>
+  </div>
 </div>

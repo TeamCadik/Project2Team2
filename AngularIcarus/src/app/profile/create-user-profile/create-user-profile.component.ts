@@ -16,6 +16,13 @@ export class CreateUserProfileComponent implements OnInit {
   @Output() submitted = new EventEmitter<boolean>();
   img = 'https://static.bandainamcoent.eu/high/dark-souls/dark-souls-hd/00-page-setup/ds-hd_game_thumb_408x314.jpg';
 
+  hitPoints = 5;
+  strength = 5;
+  dexterity = 5;
+  intel = 5;
+  defense = 5;
+  attack = 5;
+
   constructor(
     // private route: ActivatedRoute,
     private userProfileService: UserProfileService,

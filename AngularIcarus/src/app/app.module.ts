@@ -33,6 +33,7 @@ import { CommentsService } from './shared/comments.service';
 import { StatService } from './shared/stats.service';
 import { ArmourFilterPipePipe } from './armour-filter-pipe.pipe';
 import { WeaponFilterPipePipe } from './weapon-filter-pipe.pipe';
+import { NewChrStatsComponent } from './profile/create-user-profile/new-chr-stats/new-chr-stats.component';
 
 const routes=[
   {
@@ -88,7 +89,8 @@ const routes=[
     SetsComponent,
     SetDropdownComponent,
     ArmourFilterPipePipe,
-    WeaponFilterPipePipe
+    WeaponFilterPipePipe,
+    NewChrStatsComponent
   ],
   imports: [
     HttpClientModule,
