@@ -26,11 +26,17 @@ export class BuildService {
       map(resp=> resp as Build)
     );
   }
+  
+  getCharBuild(id: number): Observable<Build> {
+    const url: string = this.appUrl+'/character/'+id;
+    return this.http.get(url,{withCredentials: true}).pipe(
+      map(resp=> resp as Build)
+    );
+  }
   updateBuild(build: Build): Observable<Build> {
     const body = JSON.stringify(build);
     if(build.buildId) {
-      const url = this.appUrl+'/'+build.buildId;
-      return this.http.put(url, body, {headers: this.headers, withCredentials: true}).pipe (
+      return this.http.put(this.appUrl, body, {headers: this.headers, withCredentials: true}).pipe (
         map(resp => resp as Build)
       );
     } else {

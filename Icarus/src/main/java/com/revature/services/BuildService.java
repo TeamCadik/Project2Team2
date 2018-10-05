@@ -21,9 +21,18 @@ public class BuildService {
 	public Build getBuildById(int id) {
 		return bd.getBuildById(id);
 	}
+	public Set<Build> getCharBuild(int id) {
+		Set<Build> c = bd.getAllBuildsByCharacter(id);
+		return c;
+	}
 	
 	public Set<Build> addBuild(Build b) {
 		bd.addBuild(b);
 		return bd.getAllBuilds();
+	}
+
+	public void updateBuild(Build b) {
+		bd.updateBuild(b);
+		
 	}
 }

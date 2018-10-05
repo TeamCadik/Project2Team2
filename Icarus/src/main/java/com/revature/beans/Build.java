@@ -49,6 +49,8 @@ public class Build {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "offHandId")
 	private Weapon offHand;
+	
+	private int characterId;
 
 	private String description;
 
@@ -153,6 +155,14 @@ public class Build {
 		this.comments = comments;
 	}
 	
+	public int getCharacterId() {
+		return characterId;
+	}
+
+	public void setCharacterId(int characterId) {
+		this.characterId = characterId;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

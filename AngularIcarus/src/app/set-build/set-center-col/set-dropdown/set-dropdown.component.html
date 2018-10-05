@@ -1,5 +1,116 @@
-<div class="container">
-  <p>
-    set-dropdown works!
-  </p>
-</div>
+<div class="container mt-2">
+  <div class="row border border-dark">
+    <li class="list-group-item">
+      <span class="a">
+        <h3>Weapon or Shield</h3>
+        <select [(ngModel)]="weapon">
+        <ng-container *ngFor="let weapon of weapons"
+          [class.selected]="weapon === selectedWeapon"
+          (click)="clearDisplay()">
+        <ng-container *ngIf="weapon.itemType == 'Sheild'||true">
+          <ng-container *ngIf="weapon !== selectedWeapon && weapon !== selectedWeaponOff">
+            <option [ngValue]="weapon">{{weapon.weaponName}}</option>
+          </ng-container>
+        </ng-container>
+
+        </ng-container>
+        </select>
+        <br />
+        <button class="mt-1 btn-info rounded d-block" (click)="onSelectWeapon(weapon)">Equip main hand</button>
+        <button class="mt-1 btn-info rounded d-block" (click)="onSelectWeaponOff(weapon)">Equip off hand</button>
+        <button class="mt-1 btn-info rounded d-block" (click)="displayWeapon(weapon)">Check stats</button>
+
+          <br /> 
+      </span>
+      <span class="b">
+        <h3>Armor</h3>
+
+        What type of armourDo you want to view? 
+        <select [(ngModel)]="choice">
+            <option value="all">all</option>
+            <option value="head">head</option>
+            <option value="torso">torso</option>
+            <option value="legs">legs</option>
+            <option value="gloves">gloves</option>
+        </select> 
+
+        <br /> 
+
+        <select [(ngModel)]="armour">
+            <ng-container *ngFor="let armour of armours"
+              [class.selected]="armour === selectedArmour"
+              (click)="clearDisplay()">
+            <ng-container *ngIf="armour.armourType == choice || choice == 'all'">
+              <option [ngValue]="armour">{{armour.armourName}}</option>
+            </ng-container>
+            
+            </ng-container>
+          </select>
+          <br />
+          <button class="mt-1 btn-info rounded d-block" (click)="onSelectArmour(armour)">Equip</button>
+          <button class="mt-1 btn-info rounded d-block" (click)="displayArmour(armour)">Check stats</button>
+          
+      </span>
+
+        <br /><br />
+        
+      <button class="mt-1 btn-info rounded" (click)="saveBuild()">Save Build</button>
+      <button class="mt-1 btn-info rounded" (click)="checkBuild()">Load Build</button>
+      
+
+        <div *ngIf="build"><div *ngIf="build.buildId"><h3>BUILD {{build.buildId}}</h3></div></div>
+        <div *ngIf="displaySelectedArmour">
+            <h3>{{armour.armourName | uppercase}}</h3>
+            <label>Defense Modifier: </label> {{armour.defenseModifier}}<br />
+            <label>Increase the </label> {{armour.stat}}
+            <label> stat by  </label> {{armour.statModifier}}<br /> 
+            <label>Description: </label> {{armour.description}}
+        </div>
+        <div *ngIf="displaySelectedWeapon">
+            <h3>{{weapon.weaponName | uppercase}}</h3>
+            <label>Weapon Type: </label> {{weapon.weaponType}}<br />
+            <label>Defense Modifier: </label> {{weapon.defenseModifier}}<br /> 
+            <label>dexterity: </label> {{weapon.attackModifier}}<br />
+            <label>Description: </label> {{weapon.description}}
+          </div>
+        
+      <br /><br />
+      <span >
+          <div *ngIf="selectedHead">
+              <label>Head Piece: </label> {{selectedHead.armourName | uppercase}} equiped<br /> 
+          </div>
+          <div *ngIf="selectedTorso">
+              <label>Torso Piece: </label> {{selectedTorso.armourName | uppercase}} equiped<br /> 
+          </div>
+          <div *ngIf="selectedGloves">
+              <label>Gloves Piece: </label> {{selectedGloves.armourName | uppercase}} equiped<br /> 
+          </div>
+          <div *ngIf="selectedLegs">
+              <label>Legs Piece: </label> {{selectedLegs.armourName | uppercase}} equiped<br /> 
+          </div>
+          <div *ngIf="selectedWeapon">
+              <label>Main hand: </label> {{selectedWeapon.weaponName | uppercase}} equiped<br /> 
+          </div>
+          <div *ngIf="selectedWeaponOff">
+              <label>Off hand: </label> {{selectedWeaponOff.weaponName | uppercase}} equiped<br /> 
+          </div>
+          <div *ngIf="charMod">
+            <h4>Unequip</h4>
+           
+              <button *ngIf="selectedHead" class="mt-1 btn-info rounded" (click)="unequipHead()">Head</button>
+           
+              <button *ngIf="selectedTorso" class="mt-1 btn-info rounded" (click)="unequipTorso()">Torso</button>
+           
+              <button *ngIf="selectedGloves" class="mt-1 btn-info rounded" (click)="unequipGloves()">Gloves</button>
+           
+              <button *ngIf="selectedLegs" class="mt-1 btn-info rounded" (click)="unequipLegs()">Legs</button>
+          
+              <button *ngIf="selectedWeapon" class="mt-1 btn-info rounded" (click)="unequipMainHand()">Main hand</button>
+            
+              <button *ngIf="selectedWeaponOff" class="mt-1 btn-info rounded" (click)="unequipOffHand()">Off hand</button>
+          
+          </div>
+      </span>
+      </li>
+    </div>
+  </div>
