@@ -364,3 +364,25 @@
 2018-09-25 23:04:31 WARN  deprecation:87 - HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
 2018-09-25 23:04:31 WARN  deprecation:87 - HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
 2018-09-25 23:04:34 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-10-04 19:09:55 TRACE CharacterTest:20 - Before Character
+2018-10-04 19:09:55 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 19:18:45 TRACE CharacterTest:20 - Before Character
+2018-10-04 19:18:45 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 19:19:15 TRACE CharacterTest:20 - Before Character
+2018-10-04 19:19:15 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 19:19:29 TRACE CharacterTest:20 - Before Character
+2018-10-04 19:19:29 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 19:45:46 TRACE CharacterTest:20 - Before Character
+2018-10-04 19:45:46 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 19:45:46 TRACE CharacterTest:36 - Character [characterId=null, userId=2, characterName=Patrick, characterlevel=1, strength=1, intelligence=1, dexterity=1, hp=1, defense=1, attack=1, charImg=null, builds=null]
+2018-10-04 19:47:20 TRACE CharacterTest:20 - Before Character
+2018-10-04 19:47:20 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 19:47:20 TRACE CharacterTest:37 - Character [characterId=101, userId=2, characterName=Patrick, characterlevel=1, strength=1, intelligence=1, dexterity=1, hp=1, defense=1, attack=1, charImg=null, builds=null]
+2018-10-04 19:48:05 TRACE CharacterTest:20 - Before Character
+2018-10-04 19:48:05 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 19:48:05 TRACE CharacterTest:37 - Character [characterId=101, userId=2, characterName=Patrick, characterlevel=1, strength=1, intelligence=1, dexterity=1, hp=1, defense=1, attack=1, charImg=null, builds=null]
+2018-10-04 20:18:15 TRACE CharacterTest:20 - Before Character
+2018-10-04 20:18:15 TRACE CharacterTest:26 - Testing if you can add a character.
+2018-10-04 20:18:15 TRACE CharacterTest:37 - Character [characterId=101, userId=2, characterName=Patrick, characterlevel=1, strength=1, intelligence=1, dexterity=1, hp=1, defense=1, attack=1, charImg=null, builds=null]
+2018-10-04 20:18:24 TRACE CharacterTest:20 - Before Character
+2018-10-04 20:18:24 TRACE CharacterTest:26 - Testing if you can add a character.
