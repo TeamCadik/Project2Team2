@@ -58,7 +58,11 @@
       <button class="mt-1 btn-info rounded" (click)="checkBuild()">Load Build</button>
       
 
-        <div *ngIf="build"><div *ngIf="build.buildId"><h3>BUILD {{build.buildId}}</h3></div></div>
+        <div *ngIf="build"><h3>BUILD {{build.buildId}}</h3>
+          <label>{{build.description}}</label> <br />
+          <input type="text" id="textIn" class="ml-2 border border-info" [(ngModel)]="build.description">
+        </div>
+      
         <div *ngIf="displaySelectedArmour">
             <h3>{{armour.armourName | uppercase}}</h3>
             <label>Defense Modifier: </label> {{armour.defenseModifier}}<br />
